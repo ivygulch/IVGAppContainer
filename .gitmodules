@@ -4,3 +4,6 @@
 [submodule "external/Quick"]
 	path = external/Quick
 	url = git@github.com:Quick/Quick.git
+[submodule "external/IVGRouter"]
+	path = external/IVGRouter
+	url = git@github.com:ivygulch/IVGRouter.git
