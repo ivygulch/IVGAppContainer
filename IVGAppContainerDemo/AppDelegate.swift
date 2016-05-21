@@ -15,7 +15,11 @@ class AppDelegate: IVGACApplicationDelegate<ApplicationContainer> {
     override func configureApplicationContainer(container: ApplicationContainer) {
         let appCoordinator = DemoAppCoordinator(container: container)
         container.addCoordinator(appCoordinator, forProtocol: DemoAppCoordinatorType.self)
-        container.defaultRouteSequence = appCoordinator.welcomeRouteSequence
+        container.startupAction = {
+            container.router.executeRoute(appCoordinator.welcomeRouteSequence) {
+                _ in
+            }
+        }
     }
 
 }

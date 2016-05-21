@@ -23,8 +23,8 @@ public protocol ApplicationContainerType: class {
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
     var router: RouterType { get }
-    var defaultRouteSequence: [Any] { get set }
-    func executeDefaultRouteSequence()
+    var startupAction: (Void -> Void)? { get }
+    func executeStartupAction()
 
     var resourceCount: Int { get }
     func resource<T>(type: T.Type) -> T?
@@ -69,11 +69,13 @@ public class ApplicationContainer : ApplicationContainerType {
         router.registerDefaultPresenters()
     }
 
-    public var defaultRouteSequence: [Any] = []
+    public var startupAction: (Void -> Void)?
 
-    public func executeDefaultRouteSequence() {
-        router.executeRoute(defaultRouteSequence) {
-            _ in
+    public func executeStartupAction() {
+        if let startupAction = startupAction {
+            startupAction()
+        } else {
+            print("WARNING: startupAction is undefined")
         }
     }
 
