@@ -34,8 +34,8 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         router.registerRouteSegment(buildWrapperSegment())
     }
 
-    private func buildRootSegment() -> RouteSegment {
-        return RouteSegment(
+    private func buildRootSegment() -> VisualRouteSegment {
+        return VisualRouteSegment(
             segmentIdentifier: rootSegmentIdentifier,
             presenterIdentifier: RootRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
@@ -43,23 +43,25 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         )
     }
 
-    private func buildWelcomeSegment() -> RouteSegment  {
-        return RouteSegment(
+    private func buildWelcomeSegment() -> VisualRouteSegment  {
+        return VisualRouteSegment(
             segmentIdentifier: welcomeSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
             loadViewController:{ return {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(WelcomeViewController)) as! WelcomeViewController
                 result.nextAction = {
-                    self.container.router.executeRoute(self.nextRouteSequence)
+                    self.container.router.executeRoute(self.nextRouteSequence) {
+                        _ in
+                    }
                 }
                 return result
                 } }
         )
     }
 
-    private func buildNextSegment() -> RouteSegment  {
-        return RouteSegment(
+    private func buildNextSegment() -> VisualRouteSegment  {
+        return VisualRouteSegment(
             segmentIdentifier: nextSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
@@ -71,18 +73,22 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
                 result.navigationItem.leftBarButtonItem = newBackButton;
 
                 result.returnAction = {
-                    self.container.router.executeRoute(self.welcomeRouteSequence)
+                    self.container.router.executeRoute(self.welcomeRouteSequence) {
+                        _ in
+                    }
                 }
                 result.wrapAction = {
-                    self.container.router.appendRoute([self.wrapperSegmentIdentifier])
+                    self.container.router.appendRoute([self.wrapperSegmentIdentifier]) {
+                        _ in
+                    }
                 }
                 return result
                 } }
         )
     }
 
-    private func buildWrapperSegment() -> RouteSegment  {
-        return RouteSegment(
+    private func buildWrapperSegment() -> VisualRouteSegment  {
+        return VisualRouteSegment(
             segmentIdentifier: wrapperSegmentIdentifier,
             presenterIdentifier: WrappingRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
@@ -98,7 +104,9 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
     }
 
     @objc func nextScreenBack(bbi: UIBarButtonItem) {
-        self.container.router.executeRoute(self.welcomeRouteSequence)
+        self.container.router.executeRoute(self.welcomeRouteSequence) {
+            _ in
+        }
     }
     
     let container: ApplicationContainerType
