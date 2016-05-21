@@ -72,7 +72,9 @@ public class ApplicationContainer : ApplicationContainerType {
     public var defaultRouteSequence: [Any] = []
 
     public func executeDefaultRouteSequence() {
-        router.executeRoute(defaultRouteSequence)
+        router.executeRoute(defaultRouteSequence) {
+            _ in
+        }
     }
 
     // MARK: - Resources
