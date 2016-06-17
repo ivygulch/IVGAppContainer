@@ -53,7 +53,7 @@ class TestWindow: UIWindow {
 
 class IVGACApplicationDelegateSpec: QuickSpec {
 
-    var mockApplication:UIApplication = unsafeBitCast(0, UIApplication.self)
+    var mockApplication:UIApplication!
 
     override func spec() {
         describe("IVGACApplicationDelegate dependency injection") {
