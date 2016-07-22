@@ -81,35 +81,43 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Resources
 
+    public var resources: [ResourceType] {
+        return Array(resourcesMap.values)
+    }
+
     public var resourceCount: Int {
         return synchronizer.valueOf {
-            return self.resources.count
+            return self.resourcesMap.count
         }
     }
 
     public func resource<T>(type: T.Type) -> T? {
         return synchronizer.valueOf {
-            return self.resources[TypeKey(type)] as? T
+            return self.resourcesMap[TypeKey(type)] as? T
         }
     }
 
     public func addResource<T>(resource: ResourceType, forProtocol: T.Type) {
         synchronizer.execute {
-            self.resources[TypeKey(T)] = resource
+            self.resourcesMap[TypeKey(T)] = resource
         }
     }
 
     // MARK: - Services
 
+    public var services: [ServiceType] {
+        return Array(servicesMap.values)
+    }
+
     public var serviceCount: Int {
         return synchronizer.valueOf {
-            return self.services.count
+            return self.servicesMap.count
         }
     }
 
     public func service<T>(type: T.Type) -> T? {
         return synchronizer.valueOf {
-            return self.services[TypeKey(T)] as? T
+            return self.servicesMap[TypeKey(T)] as? T
         }
     }
 
@@ -119,7 +127,7 @@ public class ApplicationContainer : ApplicationContainerType {
             if let index = self.serviceKeyOrder.indexOf(key) {
                 self.serviceKeyOrder.removeAtIndex(index)
             }
-            self.services[key] = service
+            self.servicesMap[key] = service
             self.serviceKeyOrder.append(key)
 
             // if container state has progressed past uninitialized, then call methods that were missed
@@ -145,21 +153,25 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Coordinators
 
+    public var coordinators: [CoordinatorType] {
+        return Array(coordinatorsMap.values)
+    }
+
     public var coordinatorCount: Int {
         return synchronizer.valueOf {
-            return self.coordinators.count
+            return self.coordinatorsMap.count
         }
     }
 
     public func coordinator<T>(type: T.Type) -> T? {
         return synchronizer.valueOf {
-            return self.coordinators[TypeKey(T)] as? T
+            return self.coordinatorsMap[TypeKey(T)] as? T
         }
     }
 
     public func addCoordinator<T>(coordinator: CoordinatorType, forProtocol: T.Type) {
         synchronizer.execute {
-            self.coordinators[TypeKey(T)] = coordinator
+            self.coordinatorsMap[TypeKey(T)] = coordinator
         }
         coordinator.registerRouteSegments(router)
     }
@@ -169,8 +181,8 @@ public class ApplicationContainer : ApplicationContainerType {
     private func orderedServices() -> [ServiceType] {
         return synchronizer.valueOf {
             return self.serviceKeyOrder
-                .filter { self.services[$0] != nil }
-                .map { self.services[$0]! }
+                .filter { self.servicesMap[$0] != nil }
+                .map { self.servicesMap[$0]! }
         }
     }
 
@@ -247,10 +259,10 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Private variables
 
-    private var resources: [TypeKey: ResourceType] = [:]
-    private var services: [TypeKey: ServiceType] = [:]
+    private var resourcesMap: [TypeKey: ResourceType] = [:]
+    private var servicesMap: [TypeKey: ServiceType] = [:]
     private var serviceKeyOrder: [TypeKey] = []
-    private var coordinators: [TypeKey: CoordinatorType] = [:]
+    private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
     private let synchronizer = Synchronizer()
     private var _containerState: ContainerState = .Uninitialized
 }
