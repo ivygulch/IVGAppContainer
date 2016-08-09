@@ -9,9 +9,6 @@
 import Foundation
 
 public protocol ServiceType {
-
-    init?(container: ApplicationContainerType)
-
     func willFinishLaunching() -> Bool
     func didFinishLaunching() -> Bool
     func didBecomeActive()
@@ -19,7 +16,6 @@ public protocol ServiceType {
     func willTerminate()
     func didEnterBackground()
     func willEnterForeground()
-
 }
 
 // provide default implementations for all methods
