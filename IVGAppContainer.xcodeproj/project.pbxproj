@@ -14,8 +14,7 @@
 		F8B1991A1CB4B577005C49C5 /* IVGAppContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B1990F1CB4B577005C49C5 /* IVGAppContainer.framework */; };
 		F8B1998E1CB4CA67005C49C5 /* ApplicationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997B1CB4CA67005C49C5 /* ApplicationContainer.swift */; };
 		F8B1998F1CB4CA67005C49C5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */; };
-		F8B199901CB4CA67005C49C5 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997D1CB4CA67005C49C5 /* Resource.swift */; };
-		F8B199911CB4CA67005C49C5 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997E1CB4CA67005C49C5 /* Service.swift */; };
+		F8B199911CB4CA67005C49C5 /* LifeCycleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */; };
 		F8B199921CB4CA67005C49C5 /* IVGContainerApp.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8B199931CB4CA67005C49C5 /* Synchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199811CB4CA67005C49C5 /* Synchronizer.swift */; };
 		F8B199941CB4CA67005C49C5 /* TypeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199821CB4CA67005C49C5 /* TypeKey.swift */; };
@@ -69,8 +68,7 @@
 		F8B1992D1CB4C73F005C49C5 /* IVGAppContainerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IVGAppContainerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B1997B1CB4CA67005C49C5 /* ApplicationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationContainer.swift; sourceTree = "<group>"; };
 		F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		F8B1997D1CB4CA67005C49C5 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		F8B1997E1CB4CA67005C49C5 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCycleType.swift; sourceTree = "<group>"; };
 		F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVGContainerApp.h; sourceTree = "<group>"; };
 		F8B199811CB4CA67005C49C5 /* Synchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizer.swift; sourceTree = "<group>"; };
 		F8B199821CB4CA67005C49C5 /* TypeKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeKey.swift; sourceTree = "<group>"; };
@@ -206,8 +204,7 @@
 			children = (
 				F8B1997B1CB4CA67005C49C5 /* ApplicationContainer.swift */,
 				F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */,
-				F8B1997D1CB4CA67005C49C5 /* Resource.swift */,
-				F8B1997E1CB4CA67005C49C5 /* Service.swift */,
+				F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -527,9 +524,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B199971CB4CA67005C49C5 /* IVGACApplicationDelegate.swift in Sources */,
-				F8B199901CB4CA67005C49C5 /* Resource.swift in Sources */,
 				F8B199931CB4CA67005C49C5 /* Synchronizer.swift in Sources */,
-				F8B199911CB4CA67005C49C5 /* Service.swift in Sources */,
+				F8B199911CB4CA67005C49C5 /* LifeCycleType.swift in Sources */,
 				F8B199941CB4CA67005C49C5 /* TypeKey.swift in Sources */,
 				F8B199981CB4CA67005C49C5 /* ViewControllerLoader.swift in Sources */,
 				F8B199961CB4CA67005C49C5 /* UserDefaultsService.swift in Sources */,

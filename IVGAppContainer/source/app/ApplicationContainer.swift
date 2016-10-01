@@ -28,7 +28,7 @@ public protocol ApplicationContainerType: class {
 
     var resourceCount: Int { get }
     func resource<T>(type: T.Type) -> T?
-    func addResource<T>(resource: ResourceType, forProtocol: T.Type)
+    func addResource<T>(resource: Any, forProtocol: T.Type)
     var serviceCount: Int { get }
     func service<T>(type: T.Type) -> T?
     func addService<T>(service: Any, forProtocol: T.Type)
@@ -81,7 +81,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Resources
 
-    public var resources: [ResourceType] {
+    public var resources: [Any] {
         return Array(resourcesMap.values)
     }
 
@@ -97,7 +97,7 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public func addResource<T>(resource: ResourceType, forProtocol: T.Type) {
+    public func addResource<T>(resource: Any, forProtocol: T.Type) {
         synchronizer.execute {
             self.resourcesMap[TypeKey(T)] = resource
         }
@@ -267,7 +267,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Private variables
 
-    private var resourcesMap: [TypeKey: ResourceType] = [:]
+    private var resourcesMap: [TypeKey: Any] = [:]
     private var servicesMap: [TypeKey: Any] = [:]
     private var serviceKeyOrder: [TypeKey] = []
     private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]

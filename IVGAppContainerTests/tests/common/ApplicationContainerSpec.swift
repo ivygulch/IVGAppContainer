@@ -22,6 +22,8 @@ protocol TestServiceTypeH : LifeCycleType {}
 protocol TestServiceTypeI : LifeCycleType {}
 protocol TestServiceTypeJ : LifeCycleType {}
 
+protocol DummyResourceType { }
+
 class ApplicationContainerTypeSpec: QuickSpec {
 
     override func spec() {
@@ -35,15 +37,15 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 applicationContainer = ApplicationContainer(window: TestWindow())
                 service = BaseTestService(container: applicationContainer)!
                 coordinator = BaseTestCoordinator(container: applicationContainer)
-                resource = BaseTestResource(container: applicationContainer)!
+                resource = BaseTestResource()
             }
 
             describe("resource") {
                 it("should work") {
                     expect(applicationContainer.resourceCount).to(equal(0))
-                    applicationContainer.addResource(resource, forProtocol: ResourceType.self)
+                    applicationContainer.addResource(resource, forProtocol: DummyResourceType.self)
                     expect(applicationContainer.resourceCount).to(equal(1))
-                    if let checkResource = applicationContainer.resource(ResourceType.self) as? BaseTestResource {
+                    if let checkResource = applicationContainer.resource(DummyResourceType.self) as? BaseTestResource {
                         expect(checkResource === resource).to(beTrue())
                     }
                 }

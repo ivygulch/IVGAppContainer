@@ -9,10 +9,7 @@
 import Foundation
 import IVGAppContainer
 
-class BaseTestResource : TrackableTestClass, ResourceType {
-
-    required init?(container: ApplicationContainerType) {
-    }
+class BaseTestResource : TrackableTestClass {
 
 }
 
