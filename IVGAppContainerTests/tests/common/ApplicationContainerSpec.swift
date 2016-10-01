@@ -11,16 +11,16 @@ import Quick
 import Nimble
 import IVGAppContainer
 
-protocol TestServiceTypeA : ServiceType {}
-protocol TestServiceTypeB : ServiceType {}
-protocol TestServiceTypeC : ServiceType {}
-protocol TestServiceTypeD : ServiceType {}
-protocol TestServiceTypeE : ServiceType {}
-protocol TestServiceTypeF : ServiceType {}
-protocol TestServiceTypeG : ServiceType {}
-protocol TestServiceTypeH : ServiceType {}
-protocol TestServiceTypeI : ServiceType {}
-protocol TestServiceTypeJ : ServiceType {}
+protocol TestServiceTypeA : LifeCycleType {}
+protocol TestServiceTypeB : LifeCycleType {}
+protocol TestServiceTypeC : LifeCycleType {}
+protocol TestServiceTypeD : LifeCycleType {}
+protocol TestServiceTypeE : LifeCycleType {}
+protocol TestServiceTypeF : LifeCycleType {}
+protocol TestServiceTypeG : LifeCycleType {}
+protocol TestServiceTypeH : LifeCycleType {}
+protocol TestServiceTypeI : LifeCycleType {}
+protocol TestServiceTypeJ : LifeCycleType {}
 
 class ApplicationContainerTypeSpec: QuickSpec {
 
@@ -52,9 +52,9 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("service") {
                 it("should work") {
                     expect(applicationContainer.serviceCount).to(equal(0))
-                    applicationContainer.addService(service, forProtocol: ServiceType.self)
+                    applicationContainer.addService(service, forProtocol: LifeCycleType.self)
                     expect(applicationContainer.serviceCount).to(equal(1))
-                    if let checkService = applicationContainer.service(ServiceType.self) as? BaseTestService {
+                    if let checkService = applicationContainer.service(LifeCycleType.self) as? BaseTestService {
                         expect(checkService === service).to(beTrue())
                     }
                 }

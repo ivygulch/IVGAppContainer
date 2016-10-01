@@ -1,5 +1,5 @@
 //
-//  Service.swift
+//  LifeCycleType.swift
 //  IVGAppContainer
 //
 //  Created by Douglas Sjoquist on 3/19/16.

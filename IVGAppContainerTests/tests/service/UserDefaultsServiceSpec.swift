@@ -30,7 +30,7 @@ class UserDefaultsServiceSpec: QuickSpec {
                 let container = ApplicationContainer(window: TestWindow())
                 testNSUserDefaults = TestNSUserDefaults()
                 userDefaultsService = UserDefaultsService(container: container, userDefaults: testNSUserDefaults)
-                container.addService(userDefaultsService, forProtocol: ServiceType.self)
+                container.addService(userDefaultsService, forProtocol: LifeCycleType.self)
             }
 
             describe("willResignActive") {

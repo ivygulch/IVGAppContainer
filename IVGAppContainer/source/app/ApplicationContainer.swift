@@ -31,7 +31,7 @@ public protocol ApplicationContainerType: class {
     func addResource<T>(resource: ResourceType, forProtocol: T.Type)
     var serviceCount: Int { get }
     func service<T>(type: T.Type) -> T?
-    func addService<T>(service: ServiceType, forProtocol: T.Type)
+    func addService<T>(service: Any, forProtocol: T.Type)
     var coordinatorCount: Int { get }
     func coordinator<T>(type: T.Type) -> T?
     func addCoordinator<T>(coordinator: CoordinatorType, forProtocol: T.Type)
@@ -105,7 +105,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Services
 
-    public var services: [ServiceType] {
+    public var services: [Any] {
         return Array(servicesMap.values)
     }
 
@@ -121,7 +121,7 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public func addService<T>(service: ServiceType, forProtocol: T.Type) {
+    public func addService<T>(service: Any, forProtocol: T.Type) {
         synchronizer.execute {
             let key = TypeKey(T)
             if let index = self.serviceKeyOrder.indexOf(key) {
@@ -130,21 +130,25 @@ public class ApplicationContainer : ApplicationContainerType {
             self.servicesMap[key] = service
             self.serviceKeyOrder.append(key)
 
+            guard let lifeCycleService = service as? LifeCycleType else {
+                return
+            }
+
             // if container state has progressed past uninitialized, then call methods that were missed
             switch self._containerState {
             case .Launching:
-                service.willFinishLaunching()
+                lifeCycleService.willFinishLaunching()
             case .Inactive:
-                service.willFinishLaunching()
-                service.didFinishLaunching()
+                lifeCycleService.willFinishLaunching()
+                lifeCycleService.didFinishLaunching()
             case .Active:
-                service.willFinishLaunching()
-                service.didFinishLaunching()
-                service.didBecomeActive()
+                lifeCycleService.willFinishLaunching()
+                lifeCycleService.didFinishLaunching()
+                lifeCycleService.didBecomeActive()
             case .Background:
-                service.willFinishLaunching()
-                service.didFinishLaunching()
-                service.didEnterBackground()
+                lifeCycleService.willFinishLaunching()
+                lifeCycleService.didFinishLaunching()
+                lifeCycleService.didEnterBackground()
             default:
                 break // no extra steps necessary
             }
@@ -178,7 +182,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Lifecycle
 
-    private func orderedServices() -> [ServiceType] {
+    private func orderedServices() -> [Any] {
         return synchronizer.valueOf {
             return self.serviceKeyOrder
                 .filter { self.servicesMap[$0] != nil }
@@ -186,24 +190,28 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    private func conditionallyForEachOrderedService(block: (ServiceType) -> Bool) -> Bool {
+    private func conditionallyForEachLifeCycleService(block: (LifeCycleType) -> Bool) -> Bool {
         for service in orderedServices() {
-            if !block(service) {
-                return false
+            if let lifeCycleService = service as? LifeCycleType {
+                if !block(lifeCycleService) {
+                    return false
+                }
             }
         }
         return true
     }
 
-    private func forEachOrderedService(block: (ServiceType) -> Void) {
+    private func forEachOrderedLifeCycleService(block: (LifeCycleType) -> Void) {
         for service in orderedServices() {
-            block(service)
+            if let lifeCycleService = service as? LifeCycleType {
+                block(lifeCycleService)
+            }
         }
     }
 
     public func willFinishLaunching() -> Bool {
         containerState = .Launching
-        return conditionallyForEachOrderedService {
+        return conditionallyForEachLifeCycleService {
             service -> Bool in
             return service.willFinishLaunching()
         }
@@ -211,7 +219,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func didFinishLaunching() -> Bool {
         containerState = .Inactive
-        return conditionallyForEachOrderedService {
+        return conditionallyForEachLifeCycleService {
             service -> Bool in
             return service.didFinishLaunching()
         }
@@ -219,7 +227,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func didBecomeActive() {
         containerState = .Active
-        return forEachOrderedService {
+        return forEachOrderedLifeCycleService {
             service in
             service.didBecomeActive()
         }
@@ -227,7 +235,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func willResignActive() {
         containerState = .Inactive
-        return forEachOrderedService {
+        return forEachOrderedLifeCycleService {
             service in
             service.willResignActive()
         }
@@ -235,7 +243,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func willTerminate() {
         containerState = .Terminating
-        return forEachOrderedService {
+        return forEachOrderedLifeCycleService {
             service in
             service.willTerminate()
         }
@@ -243,7 +251,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func didEnterBackground() {
         containerState = .Background
-        return forEachOrderedService {
+        return forEachOrderedLifeCycleService {
             service in
             service.didEnterBackground()
         }
@@ -251,7 +259,7 @@ public class ApplicationContainer : ApplicationContainerType {
 
     public func willEnterForeground() {
         containerState = .Inactive
-        return forEachOrderedService {
+        return forEachOrderedLifeCycleService {
             service in
             service.willEnterForeground()
         }
@@ -260,7 +268,7 @@ public class ApplicationContainer : ApplicationContainerType {
     // MARK: - Private variables
 
     private var resourcesMap: [TypeKey: ResourceType] = [:]
-    private var servicesMap: [TypeKey: ServiceType] = [:]
+    private var servicesMap: [TypeKey: Any] = [:]
     private var serviceKeyOrder: [TypeKey] = []
     private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
     private let synchronizer = Synchronizer()

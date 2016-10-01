@@ -53,7 +53,7 @@ class TestWindow: UIWindow {
 
 class IVGACApplicationDelegateSpec: QuickSpec {
 
-    var mockApplication:UIApplication!
+    var mockApplication: UIApplication = UIApplication.sharedApplication()
 
     override func spec() {
         describe("IVGACApplicationDelegate dependency injection") {
@@ -64,7 +64,7 @@ class IVGACApplicationDelegateSpec: QuickSpec {
             beforeEach {
                 testContainer = ApplicationContainer(window: TestWindow())
                 testService = BaseTestService(container: testContainer)!
-                testContainer.addService(testService, forProtocol: ServiceType.self)
+                testContainer.addService(testService, forProtocol: LifeCycleType.self)
                 appDelegate = TestIVGACApplicationDelegate(testContainer:testContainer)
             }
 

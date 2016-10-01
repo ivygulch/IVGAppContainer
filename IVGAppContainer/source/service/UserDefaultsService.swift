@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol UserDefaultsServiceType: ServiceType {
+public protocol UserDefaultsServiceType {
     func value<T>(key: String, valueType:T.Type) -> T?
     func setValue<T>(value: T, forKey key: String)
     func removeValueForKey(key: String)

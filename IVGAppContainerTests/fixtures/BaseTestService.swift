@@ -9,7 +9,7 @@
 import Foundation
 import IVGAppContainer
 
-class BaseTestService : TrackableTestClass, ServiceType {
+class BaseTestService : TrackableTestClass, LifeCycleType {
 
     var willFinishLaunchingValue = true
     var didFinishLaunchingValue = true
