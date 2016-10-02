@@ -5,19 +5,26 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "95438028B10BBB846574013D29F154A00556A9D1" : 0,
-    "C392E3889E4946DF375FEC2557A10CBEFA7FB7AD" : 0,
-    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : 0
+    "260DD1743514C3092E6FD35FF7EC100157F2B4D6" : 0,
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : 0,
+    "C392E3889E4946DF375FEC2557A10CBEFA7FB7AD" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "30ACDE14-679E-49AE-93A0-AD3BA413208F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "95438028B10BBB846574013D29F154A00556A9D1" : "IVGAppContainer\/external\/Nimble\/",
-    "C392E3889E4946DF375FEC2557A10CBEFA7FB7AD" : "IVGAppContainer\/",
-    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : "IVGAppContainer\/external\/Quick\/"
+    "260DD1743514C3092E6FD35FF7EC100157F2B4D6" : "IVGAppContainer\/external\/IVGFoundation\/",
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : "IVGAppContainer\/external\/Quick\/",
+    "C392E3889E4946DF375FEC2557A10CBEFA7FB7AD" : "IVGAppContainer\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "IVGAppContainer",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IVGAppContainer.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ivygulch\/IVGFoundation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "260DD1743514C3092E6FD35FF7EC100157F2B4D6"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Quick\/Nimble.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

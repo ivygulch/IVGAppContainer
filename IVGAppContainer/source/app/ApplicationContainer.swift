@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IVGFoundation
 import IVGRouter
 
 public enum ContainerState {

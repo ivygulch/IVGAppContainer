@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F808DCDD1CB5911E003B6D56 /* LazyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808DCDC1CB5911E003B6D56 /* LazyViewController.swift */; };
+		F85F92BF1DA1820A00241AB7 /* IVGFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */; };
 		F8AB8D281CCD24B500E50ABD /* IVGRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */; };
 		F8AB8D2B1CCD24BE00E50ABD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D291CCD24BE00E50ABD /* Nimble.framework */; };
 		F8AB8D2C1CCD24BE00E50ABD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		F808DCDC1CB5911E003B6D56 /* LazyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyViewController.swift; sourceTree = "<group>"; };
+		F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IVGFoundation.framework; path = "external/IVGFoundation/build/Debug-iphoneos/IVGFoundation.framework"; sourceTree = "<group>"; };
 		F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IVGRouter.framework; path = "external/IVGRouter/build/Debug-iphoneos/IVGRouter.framework"; sourceTree = "<group>"; };
 		F8AB8D291CCD24BE00E50ABD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "external/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "external/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F85F92BF1DA1820A00241AB7 /* IVGFoundation.framework in Frameworks */,
 				F8AB8D281CCD24B500E50ABD /* IVGRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +364,7 @@
 		F8B19A0D1CB4CC1A005C49C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */,
 				F8AB8D291CCD24BE00E50ABD /* Nimble.framework */,
 				F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */,
 				F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */,

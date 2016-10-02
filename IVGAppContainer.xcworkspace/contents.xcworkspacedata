@@ -5,6 +5,9 @@
       location = "container:IVGAppContainer.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:external/IVGFoundation/IVGFoundation.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:external/IVGRouter/IVGRouter.xcodeproj">
    </FileRef>
    <FileRef

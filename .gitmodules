@@ -7,3 +7,6 @@
 [submodule "external/IVGRouter"]
 	path = external/IVGRouter
 	url = git@github.com:ivygulch/IVGRouter.git
+[submodule "external/IVGFoundation"]
+	path = external/IVGFoundation
+	url = git@github.com:ivygulch/IVGFoundation.git
