@@ -16,8 +16,6 @@
 		F8B1998F1CB4CA67005C49C5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */; };
 		F8B199911CB4CA67005C49C5 /* LifeCycleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */; };
 		F8B199921CB4CA67005C49C5 /* IVGContainerApp.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F8B199931CB4CA67005C49C5 /* Synchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199811CB4CA67005C49C5 /* Synchronizer.swift */; };
-		F8B199941CB4CA67005C49C5 /* TypeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199821CB4CA67005C49C5 /* TypeKey.swift */; };
 		F8B199961CB4CA67005C49C5 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199881CB4CA67005C49C5 /* UserDefaultsService.swift */; };
 		F8B199971CB4CA67005C49C5 /* IVGACApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1998A1CB4CA67005C49C5 /* IVGACApplicationDelegate.swift */; };
 		F8B199981CB4CA67005C49C5 /* ViewControllerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1998C1CB4CA67005C49C5 /* ViewControllerLoader.swift */; };
@@ -70,8 +68,6 @@
 		F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCycleType.swift; sourceTree = "<group>"; };
 		F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVGContainerApp.h; sourceTree = "<group>"; };
-		F8B199811CB4CA67005C49C5 /* Synchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizer.swift; sourceTree = "<group>"; };
-		F8B199821CB4CA67005C49C5 /* TypeKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeKey.swift; sourceTree = "<group>"; };
 		F8B199881CB4CA67005C49C5 /* UserDefaultsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		F8B1998A1CB4CA67005C49C5 /* IVGACApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IVGACApplicationDelegate.swift; sourceTree = "<group>"; };
 		F8B1998C1CB4CA67005C49C5 /* ViewControllerLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLoader.swift; sourceTree = "<group>"; };
@@ -187,7 +183,6 @@
 			children = (
 				F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */,
 				F8B1997A1CB4CA67005C49C5 /* app */,
-				F8B199801CB4CA67005C49C5 /* common */,
 				F8B199831CB4CA67005C49C5 /* coordinator */,
 				F8B199851CB4CA67005C49C5 /* model */,
 				F8B199861CB4CA67005C49C5 /* resource */,
@@ -207,15 +202,6 @@
 				F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */,
 			);
 			path = app;
-			sourceTree = "<group>";
-		};
-		F8B199801CB4CA67005C49C5 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				F8B199811CB4CA67005C49C5 /* Synchronizer.swift */,
-				F8B199821CB4CA67005C49C5 /* TypeKey.swift */,
-			);
-			path = common;
 			sourceTree = "<group>";
 		};
 		F8B199831CB4CA67005C49C5 /* coordinator */ = {
@@ -524,9 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B199971CB4CA67005C49C5 /* IVGACApplicationDelegate.swift in Sources */,
-				F8B199931CB4CA67005C49C5 /* Synchronizer.swift in Sources */,
 				F8B199911CB4CA67005C49C5 /* LifeCycleType.swift in Sources */,
-				F8B199941CB4CA67005C49C5 /* TypeKey.swift in Sources */,
 				F8B199981CB4CA67005C49C5 /* ViewControllerLoader.swift in Sources */,
 				F8B199961CB4CA67005C49C5 /* UserDefaultsService.swift in Sources */,
 				F8B1998F1CB4CA67005C49C5 /* Coordinator.swift in Sources */,
