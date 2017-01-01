@@ -9,59 +9,59 @@
 import Foundation
 
 public protocol UserDefaultsServiceType {
-    func value<T>(key: String, valueType:T.Type) -> T?
-    func setValue<T>(value: T, forKey key: String)
-    func removeValueForKey(key: String)
+    func value<T>(_ key: String, valueType:T.Type) -> T?
+    func setValue<T>(_ value: T, forKey key: String)
+    func removeValueForKey(_ key: String)
 }
 
 public class UserDefaultsService: UserDefaultsServiceType {
 
     public required init?(container: ApplicationContainerType) {
         self.container = container
-        self.userDefaults = NSUserDefaults.standardUserDefaults()
+        self.userDefaults = UserDefaults.standard
     }
 
-    public init(container: ApplicationContainerType, userDefaults: NSUserDefaults) {
+    public init(container: ApplicationContainerType, userDefaults: UserDefaults) {
         self.container = container
         self.userDefaults = userDefaults
     }
 
-    public func value<T>(key: String, valueType:T.Type) -> T? {
+    public func value<T>(_ key: String, valueType:T.Type) -> T? {
         if T.self == String.self {
-            return userDefaults.stringForKey(key) as! T?
+            return userDefaults.string(forKey: key) as! T?
         } else if T.self == Int.self {
-            return userDefaults.integerForKey(key) as? T
+            return userDefaults.integer(forKey: key) as? T
         } else if T.self == Float.self {
-            return userDefaults.floatForKey(key) as? T
+            return userDefaults.float(forKey: key) as? T
         } else if T.self == Double.self {
-            return userDefaults.doubleForKey(key) as? T
+            return userDefaults.double(forKey: key) as? T
         } else if T.self == Bool.self {
-            return userDefaults.boolForKey(key) as? T
-        } else if T.self == NSURL.self {
-            return userDefaults.URLForKey(key) as? T
+            return userDefaults.bool(forKey: key) as? T
+        } else if T.self == URL.self {
+            return userDefaults.url(forKey: key) as? T
         }
 
         return nil
     }
 
-    public func setValue<T>(value: T, forKey key: String) {
+    public func setValue<T>(_ value: T, forKey key: String) {
         if let value = value as? String {
-            userDefaults.setObject(value, forKey: key)
+            userDefaults.set(value, forKey: key)
         } else if let value = value as? Int {
-            userDefaults.setInteger(value, forKey: key)
+            userDefaults.set(value, forKey: key)
         } else if let value = value as? Float {
-            userDefaults.setFloat(value, forKey: key)
+            userDefaults.set(value, forKey: key)
         } else if let value = value as? Double {
-            userDefaults.setDouble(value, forKey: key)
+            userDefaults.set(value, forKey: key)
         } else if let value = value as? Bool {
-            userDefaults.setBool(value, forKey: key)
-        } else if let value = value as? NSURL {
-            userDefaults.setURL(value, forKey: key)
+            userDefaults.set(value, forKey: key)
+        } else if let value = value as? URL {
+            userDefaults.set(value, forKey: key)
         }
     }
 
-    public func removeValueForKey(key: String) {
-        userDefaults.removeObjectForKey(key)
+    public func removeValueForKey(_ key: String) {
+        userDefaults.removeObject(forKey: key)
     }
 
     public func willResignActive() {
@@ -70,6 +70,6 @@ public class UserDefaultsService: UserDefaultsServiceType {
 
     // MARK: private variables
 
-    private let container: ApplicationContainerType
-    private let userDefaults: NSUserDefaults
+    fileprivate let container: ApplicationContainerType
+    fileprivate let userDefaults: UserDefaults
 }

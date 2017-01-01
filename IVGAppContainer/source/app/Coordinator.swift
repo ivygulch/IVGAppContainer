@@ -10,5 +10,5 @@ import Foundation
 import IVGRouter
 
 public protocol CoordinatorType {
-    func registerRouteSegments(router: RouterType)
+    func registerRouteSegments(_ router: RouterType)
 }

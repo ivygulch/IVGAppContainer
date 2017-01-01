@@ -83,7 +83,7 @@ class UserDefaultsServiceSpec: QuickSpec {
                 }
 
                 it("setting url should return same value") {
-                    let expectedValue = NSURL(string: "http://example.com")!
+                    let expectedValue = URL(string: "http://example.com")!
                     let key = "key"
                     userDefaultsService.setValue(expectedValue, forKey:key)
                     let actualValue = userDefaultsService.value(key, valueType: NSURL.self)

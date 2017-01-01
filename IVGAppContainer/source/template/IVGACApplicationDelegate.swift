@@ -10,25 +10,25 @@
 
 import UIKit
 
-public class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, UIApplicationDelegate {
+open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, UIApplicationDelegate {
 
     // MARK: - methods to override
 
     /// override for testing or if a subclass is desired
     public lazy var container: T = self.createApplicationContainer(self.window)
 
-    public func createApplicationContainer(window: UIWindow?) -> T {
+    public func createApplicationContainer(_ window: UIWindow?) -> T {
         return T(window: window)
     }
 
-    public func configureApplicationContainer(container: T) {
+    open func configureApplicationContainer(_ container: T) {
         fatalError("You must override this method to configure the application container")
     }
 
     // MARK: - standard UIApplicationDelegate methods
 
-    public func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
 
         configureApplicationContainer(container)
         container.executeStartupAction()
@@ -36,31 +36,31 @@ public class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder
         return container.willFinishLaunching()
     }
     
-    public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let result = container.didFinishLaunching() ?? false
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let result = container.didFinishLaunching()
         if result {
             window?.makeKeyAndVisible()
         }
         return result
     }
     
-    public func applicationDidBecomeActive(application: UIApplication) {
+    public func applicationDidBecomeActive(_ application: UIApplication) {
         container.didBecomeActive()
     }
 
-    public func applicationWillResignActive(application: UIApplication) {
+    public func applicationWillResignActive(_ application: UIApplication) {
         container.willResignActive()
     }
 
-    public func applicationWillTerminate(application: UIApplication) {
+    public func applicationWillTerminate(_ application: UIApplication) {
         container.willTerminate()
     }
 
-    public func applicationDidEnterBackground(application: UIApplication) {
+    public func applicationDidEnterBackground(_ application: UIApplication) {
         container.didEnterBackground()
     }
 
-    public func applicationWillEnterForeground(application: UIApplication) {
+    public func applicationWillEnterForeground(_ application: UIApplication) {
         container.willEnterForeground()
     }
 

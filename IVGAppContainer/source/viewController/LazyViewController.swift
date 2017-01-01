@@ -10,7 +10,7 @@ import UIKit
 
 public class LazyViewController : UIViewController {
 
-    public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, loadSegment:(Void) -> (UIViewController?)) {
+    public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, loadSegment:@escaping (Void) -> (UIViewController?)) {
         self.loadSegment = loadSegment
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -22,12 +22,12 @@ public class LazyViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let loadSegment = loadSegment, childViewController = loadSegment() {
+        if let loadSegment = loadSegment, let childViewController = loadSegment() {
             addChildViewController(childViewController)
             childViewController.view.frame =
                 view.bounds
             view.addSubview(childViewController.view)
-            childViewController.didMoveToParentViewController(self)
+            childViewController.didMove(toParentViewController: self)
         }
     }
 
@@ -35,6 +35,6 @@ public class LazyViewController : UIViewController {
         return self.childViewControllers.first
     }()
 
-    private var loadSegment:((Void) -> (UIViewController?))?
+    fileprivate var loadSegment:((Void) -> (UIViewController?))?
 
 }

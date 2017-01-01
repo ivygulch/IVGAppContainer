@@ -11,12 +11,12 @@ import IVGFoundation
 import IVGRouter
 
 public enum ContainerState {
-    case Uninitialized
-    case Launching
-    case Inactive
-    case Active
-    case Background
-    case Terminating
+    case uninitialized
+    case launching
+    case inactive
+    case active
+    case background
+    case terminating
 }
 
 public protocol ApplicationContainerType: class {
@@ -24,18 +24,18 @@ public protocol ApplicationContainerType: class {
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
     var router: RouterType { get }
-    var startupAction: (Void -> Void)? { get }
+    var startupAction: ((Void) -> Void)? { get }
     func executeStartupAction()
 
     var resourceCount: Int { get }
-    func resource<T>(type: T.Type) -> T?
-    func addResource<T>(resource: Any, forProtocol: T.Type)
+    func resource<T>(_ type: T.Type) -> T?
+    func addResource<T>(_ resource: Any, forProtocol: T.Type)
     var serviceCount: Int { get }
-    func service<T>(type: T.Type) -> T?
-    func addService<T>(service: Any, forProtocol: T.Type)
+    func service<T>(_ type: T.Type) -> T?
+    func addService<T>(_ service: Any, forProtocol: T.Type)
     var coordinatorCount: Int { get }
-    func coordinator<T>(type: T.Type) -> T?
-    func addCoordinator<T>(coordinator: CoordinatorType, forProtocol: T.Type)
+    func coordinator<T>(_ type: T.Type) -> T?
+    func addCoordinator<T>(_ coordinator: CoordinatorType, forProtocol: T.Type)
 
     func willFinishLaunching() -> Bool
     func didFinishLaunching() -> Bool
@@ -46,7 +46,7 @@ public protocol ApplicationContainerType: class {
     func willEnterForeground()
 }
 
-public class ApplicationContainer : ApplicationContainerType {
+open class ApplicationContainer : ApplicationContainerType {
 
     public let window: UIWindow?
     public var containerState: ContainerState {
@@ -70,7 +70,7 @@ public class ApplicationContainer : ApplicationContainerType {
         router.registerDefaultPresenters()
     }
 
-    public var startupAction: (Void -> Void)?
+    public var startupAction: ((Void) -> Void)?
 
     public func executeStartupAction() {
         if let startupAction = startupAction {
@@ -92,15 +92,15 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public func resource<T>(type: T.Type) -> T? {
+    public func resource<T>(_ type: T.Type) -> T? {
         return synchronizer.valueOf {
             return self.resourcesMap[TypeKey(type)] as? T
         }
     }
 
-    public func addResource<T>(resource: Any, forProtocol: T.Type) {
+    public func addResource<T>(_ resource: Any, forProtocol: T.Type) {
         synchronizer.execute {
-            self.resourcesMap[TypeKey(T)] = resource
+            self.resourcesMap[TypeKey(T.self)] = resource
         }
     }
 
@@ -116,17 +116,17 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public func service<T>(type: T.Type) -> T? {
+    public func service<T>(_ type: T.Type) -> T? {
         return synchronizer.valueOf {
-            return self.servicesMap[TypeKey(T)] as? T
+            return self.servicesMap[TypeKey(T.self)] as? T
         }
     }
 
-    public func addService<T>(service: Any, forProtocol: T.Type) {
+    public func addService<T>(_ service: Any, forProtocol: T.Type) {
         synchronizer.execute {
-            let key = TypeKey(T)
-            if let index = self.serviceKeyOrder.indexOf(key) {
-                self.serviceKeyOrder.removeAtIndex(index)
+            let key = TypeKey(T.self)
+            if let index = self.serviceKeyOrder.index(of: key) {
+                self.serviceKeyOrder.remove(at: index)
             }
             self.servicesMap[key] = service
             self.serviceKeyOrder.append(key)
@@ -137,19 +137,19 @@ public class ApplicationContainer : ApplicationContainerType {
 
             // if container state has progressed past uninitialized, then call methods that were missed
             switch self._containerState {
-            case .Launching:
-                lifeCycleService.willFinishLaunching()
-            case .Inactive:
-                lifeCycleService.willFinishLaunching()
-                lifeCycleService.didFinishLaunching()
-            case .Active:
-                lifeCycleService.willFinishLaunching()
-                lifeCycleService.didFinishLaunching()
-                lifeCycleService.didBecomeActive()
-            case .Background:
-                lifeCycleService.willFinishLaunching()
-                lifeCycleService.didFinishLaunching()
-                lifeCycleService.didEnterBackground()
+            case .launching:
+                _ = lifeCycleService.willFinishLaunching()
+            case .inactive:
+                _ = lifeCycleService.willFinishLaunching()
+                _ = lifeCycleService.didFinishLaunching()
+            case .active:
+                _ = lifeCycleService.willFinishLaunching()
+                _ = lifeCycleService.didFinishLaunching()
+                _ = lifeCycleService.didBecomeActive()
+            case .background:
+                _ = lifeCycleService.willFinishLaunching()
+                _ = lifeCycleService.didFinishLaunching()
+                _ = lifeCycleService.didEnterBackground()
             default:
                 break // no extra steps necessary
             }
@@ -168,22 +168,22 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public func coordinator<T>(type: T.Type) -> T? {
+    public func coordinator<T>(_ type: T.Type) -> T? {
         return synchronizer.valueOf {
-            return self.coordinatorsMap[TypeKey(T)] as? T
+            return self.coordinatorsMap[TypeKey(T.self)] as? T
         }
     }
 
-    public func addCoordinator<T>(coordinator: CoordinatorType, forProtocol: T.Type) {
+    public func addCoordinator<T>(_ coordinator: CoordinatorType, forProtocol: T.Type) {
         synchronizer.execute {
-            self.coordinatorsMap[TypeKey(T)] = coordinator
+            self.coordinatorsMap[TypeKey(T.self)] = coordinator
         }
         coordinator.registerRouteSegments(router)
     }
 
     // MARK: - Lifecycle
 
-    private func orderedServices() -> [Any] {
+    fileprivate func orderedServices() -> [Any] {
         return synchronizer.valueOf {
             return self.serviceKeyOrder
                 .filter { self.servicesMap[$0] != nil }
@@ -191,7 +191,7 @@ public class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    private func conditionallyForEachLifeCycleService(block: (LifeCycleType) -> Bool) -> Bool {
+    fileprivate func conditionallyForEachLifeCycleService(_ block: (LifeCycleType) -> Bool) -> Bool {
         for service in orderedServices() {
             if let lifeCycleService = service as? LifeCycleType {
                 if !block(lifeCycleService) {
@@ -202,7 +202,7 @@ public class ApplicationContainer : ApplicationContainerType {
         return true
     }
 
-    private func forEachOrderedLifeCycleService(block: (LifeCycleType) -> Void) {
+    fileprivate func forEachOrderedLifeCycleService(_ block: (LifeCycleType) -> Void) {
         for service in orderedServices() {
             if let lifeCycleService = service as? LifeCycleType {
                 block(lifeCycleService)
@@ -211,7 +211,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func willFinishLaunching() -> Bool {
-        containerState = .Launching
+        containerState = .launching
         return conditionallyForEachLifeCycleService {
             service -> Bool in
             return service.willFinishLaunching()
@@ -219,7 +219,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func didFinishLaunching() -> Bool {
-        containerState = .Inactive
+        containerState = .inactive
         return conditionallyForEachLifeCycleService {
             service -> Bool in
             return service.didFinishLaunching()
@@ -227,7 +227,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func didBecomeActive() {
-        containerState = .Active
+        containerState = .active
         return forEachOrderedLifeCycleService {
             service in
             service.didBecomeActive()
@@ -235,7 +235,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func willResignActive() {
-        containerState = .Inactive
+        containerState = .inactive
         return forEachOrderedLifeCycleService {
             service in
             service.willResignActive()
@@ -243,7 +243,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func willTerminate() {
-        containerState = .Terminating
+        containerState = .terminating
         return forEachOrderedLifeCycleService {
             service in
             service.willTerminate()
@@ -251,7 +251,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func didEnterBackground() {
-        containerState = .Background
+        containerState = .background
         return forEachOrderedLifeCycleService {
             service in
             service.didEnterBackground()
@@ -259,7 +259,7 @@ public class ApplicationContainer : ApplicationContainerType {
     }
 
     public func willEnterForeground() {
-        containerState = .Inactive
+        containerState = .inactive
         return forEachOrderedLifeCycleService {
             service in
             service.willEnterForeground()
@@ -268,10 +268,10 @@ public class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Private variables
 
-    private var resourcesMap: [TypeKey: Any] = [:]
-    private var servicesMap: [TypeKey: Any] = [:]
-    private var serviceKeyOrder: [TypeKey] = []
-    private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
-    private let synchronizer = Synchronizer()
-    private var _containerState: ContainerState = .Uninitialized
+    fileprivate var resourcesMap: [TypeKey: Any] = [:]
+    fileprivate var servicesMap: [TypeKey: Any] = [:]
+    fileprivate var serviceKeyOrder: [TypeKey] = []
+    fileprivate var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
+    fileprivate let synchronizer = Synchronizer()
+    fileprivate var _containerState: ContainerState = .uninitialized
 }
