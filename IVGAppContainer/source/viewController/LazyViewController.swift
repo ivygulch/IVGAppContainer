@@ -35,6 +35,6 @@ public class LazyViewController : UIViewController {
         return self.childViewControllers.first
     }()
 
-    fileprivate var loadSegment:((Void) -> (UIViewController?))?
+    private var loadSegment:((Void) -> (UIViewController?))?
 
 }

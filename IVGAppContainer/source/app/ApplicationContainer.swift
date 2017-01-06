@@ -183,7 +183,7 @@ open class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Lifecycle
 
-    fileprivate func orderedServices() -> [Any] {
+    private func orderedServices() -> [Any] {
         return synchronizer.valueOf {
             return self.serviceKeyOrder
                 .filter { self.servicesMap[$0] != nil }
@@ -191,7 +191,7 @@ open class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    fileprivate func conditionallyForEachLifeCycleService(_ block: (LifeCycleType) -> Bool) -> Bool {
+    private func conditionallyForEachLifeCycleService(_ block: (LifeCycleType) -> Bool) -> Bool {
         for service in orderedServices() {
             if let lifeCycleService = service as? LifeCycleType {
                 if !block(lifeCycleService) {
@@ -202,7 +202,7 @@ open class ApplicationContainer : ApplicationContainerType {
         return true
     }
 
-    fileprivate func forEachOrderedLifeCycleService(_ block: (LifeCycleType) -> Void) {
+    private func forEachOrderedLifeCycleService(_ block: (LifeCycleType) -> Void) {
         for service in orderedServices() {
             if let lifeCycleService = service as? LifeCycleType {
                 block(lifeCycleService)
@@ -268,10 +268,10 @@ open class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Private variables
 
-    fileprivate var resourcesMap: [TypeKey: Any] = [:]
-    fileprivate var servicesMap: [TypeKey: Any] = [:]
-    fileprivate var serviceKeyOrder: [TypeKey] = []
-    fileprivate var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
-    fileprivate let synchronizer = Synchronizer()
-    fileprivate var _containerState: ContainerState = .uninitialized
+    private var resourcesMap: [TypeKey: Any] = [:]
+    private var servicesMap: [TypeKey: Any] = [:]
+    private var serviceKeyOrder: [TypeKey] = []
+    private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
+    private let synchronizer = Synchronizer()
+    private var _containerState: ContainerState = .uninitialized
 }

@@ -70,6 +70,6 @@ public class UserDefaultsService: UserDefaultsServiceType {
 
     // MARK: private variables
 
-    fileprivate let container: ApplicationContainerType
-    fileprivate let userDefaults: UserDefaults
+    private let container: ApplicationContainerType
+    private let userDefaults: UserDefaults
 }
