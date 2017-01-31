@@ -12,11 +12,11 @@ import IVGAppContainer
 @UIApplicationMain
 class AppDelegate: IVGACApplicationDelegate<ApplicationContainer> {
 
-    override func configureApplicationContainer(container: ApplicationContainer) {
+    override func configure(applicationContainer container: ApplicationContainer) {
         let appCoordinator = DemoAppCoordinator(container: container)
         container.addCoordinator(appCoordinator, forProtocol: DemoAppCoordinatorType.self)
         container.startupAction = {
-            container.router.executeRoute(appCoordinator.welcomeRouteSequence) { _ in }
+            container.router.execute(route: appCoordinator.welcomeRouteSequence) { _ in }
         }
     }
 

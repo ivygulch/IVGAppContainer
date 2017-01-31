@@ -18,11 +18,11 @@ class TestIVGACApplicationDelegate : IVGACApplicationDelegate<ApplicationContain
         self.testContainer = testContainer
     }
 
-    override func createApplicationContainer(_ window: UIWindow?) -> ApplicationContainer {
+    override func createApplicationContainer(withWindow window: UIWindow?) -> ApplicationContainer {
         return testContainer
     }
 
-    override func configureApplicationContainer(_ container: ApplicationContainer) {
+    override func configure(applicationContainer container: ApplicationContainer) {
     }
 }
 
@@ -30,7 +30,7 @@ class TestAppCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
     }
 
-    func registerRouteSegments(_ router: RouterType) {
+    func registerRouteSegments(withRouter router: RouterType) {
 
     }
 

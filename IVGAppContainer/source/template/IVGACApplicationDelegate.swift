@@ -15,13 +15,13 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
     // MARK: - methods to override
 
     /// override for testing or if a subclass is desired
-    public lazy var container: T = self.createApplicationContainer(self.window)
+    public lazy var container: T = self.createApplicationContainer(withWindow: self.window)
 
-    public func createApplicationContainer(_ window: UIWindow?) -> T {
+    public func createApplicationContainer(withWindow window: UIWindow?) -> T {
         return T(window: window)
     }
 
-    open func configureApplicationContainer(_ container: T) {
+    open func configure(applicationContainer container: T) {
         fatalError("You must override this method to configure the application container")
     }
 
@@ -30,7 +30,7 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
     public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        configureApplicationContainer(container)
+        configure(applicationContainer: container)
         container.executeStartupAction()
         
         return container.willFinishLaunching()

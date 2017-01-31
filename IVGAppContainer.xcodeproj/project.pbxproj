@@ -186,13 +186,9 @@
 			children = (
 				F8B1997F1CB4CA67005C49C5 /* IVGContainerApp.h */,
 				F8B1997A1CB4CA67005C49C5 /* app */,
-				F8B199831CB4CA67005C49C5 /* coordinator */,
-				F8B199851CB4CA67005C49C5 /* model */,
-				F8B199861CB4CA67005C49C5 /* resource */,
 				F8B199871CB4CA67005C49C5 /* service */,
 				F8B199891CB4CA67005C49C5 /* template */,
 				F8B1998B1CB4CA67005C49C5 /* viewController */,
-				F8B1998D1CB4CA67005C49C5 /* viewModel */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -205,27 +201,6 @@
 				F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */,
 			);
 			path = app;
-			sourceTree = "<group>";
-		};
-		F8B199831CB4CA67005C49C5 /* coordinator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = coordinator;
-			sourceTree = "<group>";
-		};
-		F8B199851CB4CA67005C49C5 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		F8B199861CB4CA67005C49C5 /* resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = resource;
 			sourceTree = "<group>";
 		};
 		F8B199871CB4CA67005C49C5 /* service */ = {
@@ -251,13 +226,6 @@
 				F8B1998C1CB4CA67005C49C5 /* ViewControllerLoader.swift */,
 			);
 			path = viewController;
-			sourceTree = "<group>";
-		};
-		F8B1998D1CB4CA67005C49C5 /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
 			sourceTree = "<group>";
 		};
 		F8B199991CB4CAF7005C49C5 /* fixtures */ = {
@@ -460,6 +428,7 @@
 					};
 					F8B1992C1CB4C73F005C49C5 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -753,6 +722,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivygulch.IVGAppContainerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -765,6 +735,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivygulch.IVGAppContainerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

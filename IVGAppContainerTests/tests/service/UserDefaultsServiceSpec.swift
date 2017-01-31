@@ -44,7 +44,7 @@ class UserDefaultsServiceSpec: QuickSpec {
             describe("setters") {
                 it("setting string should return same value") {
                     let expectedValue = "test"
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: String.self)
                     expect(actualValue).to(equal(expectedValue))
@@ -52,7 +52,7 @@ class UserDefaultsServiceSpec: QuickSpec {
 
                 it("setting int should return same value") {
                     let expectedValue = 123
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: Int.self)
                     expect(actualValue).to(equal(expectedValue))
@@ -60,7 +60,7 @@ class UserDefaultsServiceSpec: QuickSpec {
 
                 it("setting float should return same value") {
                     let expectedValue = Float(123.456)
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: Float.self)
                     expect(actualValue).to(equal(expectedValue))
@@ -68,7 +68,7 @@ class UserDefaultsServiceSpec: QuickSpec {
 
                 it("setting double should return same value") {
                     let expectedValue = Double(123.45678)
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: Double.self)
                     expect(actualValue).to(equal(expectedValue))
@@ -76,15 +76,15 @@ class UserDefaultsServiceSpec: QuickSpec {
 
                 it("setting bool should return same value") {
                     let expectedValue = true
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: Bool.self)
                     expect(actualValue).to(equal(expectedValue))
                 }
 
                 it("setting url should return same value") {
-                    let expectedValue = URL(string: "http: //example.com")!
-                    let key = "key"
+                    let expectedValue = URL(string: "http://example.com")
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue(expectedValue, forKey: key)
                     let actualValue = userDefaultsService.value(key, valueType: URL.self)
                     expect(actualValue).to(equal(expectedValue))
@@ -93,7 +93,7 @@ class UserDefaultsServiceSpec: QuickSpec {
 
             describe("removing") {
                 it("a value should mean it is gone") {
-                    let key = "key"
+                    let key = NSUUID().uuidString
                     userDefaultsService.setValue("test", forKey: key)
                     let valueBefore = userDefaultsService.value(key, valueType: String.self)
                     expect(valueBefore).toNot(beNil())

@@ -27,14 +27,14 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         self.container = container
     }
 
-    func registerRouteSegments(router: RouterType) {
-        router.registerRouteSegment(buildRootSegment())
-        router.registerRouteSegment(buildWelcomeSegment())
-        router.registerRouteSegment(buildNextSegment())
-        router.registerRouteSegment(buildWrapperSegment())
+    func registerRouteSegments(withRouter router: RouterType) {
+        router.register(routeSegment: buildRootSegment())
+        router.register(routeSegment: buildWelcomeSegment())
+        router.register(routeSegment: buildNextSegment())
+        router.register(routeSegment: buildWrapperSegment())
     }
 
-    private func buildRootSegment() -> VisualRouteSegment {
+    fileprivate func buildRootSegment() -> VisualRouteSegment {
         return VisualRouteSegment(
             segmentIdentifier: rootSegmentIdentifier,
             presenterIdentifier: RootRouteSegmentPresenter.defaultPresenterIdentifier,
@@ -43,51 +43,51 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         )
     }
 
-    private func buildWelcomeSegment() -> VisualRouteSegment  {
+    fileprivate func buildWelcomeSegment() -> VisualRouteSegment  {
         return VisualRouteSegment(
             segmentIdentifier: welcomeSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
             loadViewController: { return {
-                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(WelcomeViewController)) as! WelcomeViewController
+                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WelcomeViewController.self)) as! WelcomeViewController
                 result.nextAction = {
-                    self.container.router.executeRoute(self.nextRouteSequence) { _ in }
+                    self.container.router.execute(route: self.nextRouteSequence) { _ in }
                 }
                 return result
                 } }
         )
     }
 
-    private func buildNextSegment() -> VisualRouteSegment  {
+    fileprivate func buildNextSegment() -> VisualRouteSegment  {
         return VisualRouteSegment(
             segmentIdentifier: nextSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
             loadViewController: { return {
-                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(NextScreenViewController)) as! NextScreenViewController
+                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: NextScreenViewController.self)) as! NextScreenViewController
 
                 result.navigationItem.hidesBackButton = true
-                let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.nextScreenBack))
+                let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.nextScreenBack))
                 result.navigationItem.leftBarButtonItem = newBackButton;
 
                 result.returnAction = {
-                    self.container.router.executeRoute(self.welcomeRouteSequence) { _ in }
+                    self.container.router.execute(route: self.welcomeRouteSequence) { _ in }
                 }
                 result.wrapAction = {
-                    self.container.router.appendRoute([self.wrapperSegmentIdentifier]) { _ in }
+                    self.container.router.append(route: [self.wrapperSegmentIdentifier]) { _ in }
                 }
                 return result
                 } }
         )
     }
 
-    private func buildWrapperSegment() -> VisualRouteSegment  {
+    fileprivate func buildWrapperSegment() -> VisualRouteSegment  {
         return VisualRouteSegment(
             segmentIdentifier: wrapperSegmentIdentifier,
             presenterIdentifier: WrappingRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
             loadViewController: { return {
-                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(WrapperViewController)) as! WrapperViewController
+                let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WrapperViewController.self)) as! WrapperViewController
 
                 result.unwrapAction = {
                     print("do unwrap")
@@ -97,8 +97,8 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         )
     }
 
-    @objc func nextScreenBack(bbi: UIBarButtonItem) {
-        self.container.router.executeRoute(self.welcomeRouteSequence) { _ in }
+    @objc func nextScreenBack(_ bbi: UIBarButtonItem) {
+        self.container.router.execute(route: self.welcomeRouteSequence) { _ in }
     }
     
     let container: ApplicationContainerType

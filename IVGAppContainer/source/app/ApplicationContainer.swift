@@ -178,7 +178,7 @@ open class ApplicationContainer : ApplicationContainerType {
         synchronizer.execute {
             self.coordinatorsMap[TypeKey(T.self)] = coordinator
         }
-        coordinator.registerRouteSegments(router)
+        coordinator.registerRouteSegments(withRouter: router)
     }
 
     // MARK: - Lifecycle

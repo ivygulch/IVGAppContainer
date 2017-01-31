@@ -10,15 +10,15 @@ import UIKit
 
 class NextScreenViewController : UIViewController {
 
-    var returnAction: (Void -> Void)?
-    var wrapAction: (Void -> Void)?
+    var returnAction: ((Void) -> Void)?
+    var wrapAction: ((Void) -> Void)?
 
-    @IBAction func wrapAction(button: UIButton) {
+    @IBAction func wrapAction(_ button: UIButton) {
         print("wrapAction")
         wrapAction?()
     }
 
-    @IBAction func returnAction(button: UIButton) {
+    @IBAction func returnAction(_ button: UIButton) {
         print("returnAction")
         returnAction?()
     }
