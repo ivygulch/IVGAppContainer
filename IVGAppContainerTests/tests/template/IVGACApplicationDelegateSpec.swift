@@ -40,7 +40,7 @@ class TestWindow: UIWindow {
     var rootViewControllerSetterCount = 0
     var makeKeyAndVisibleCallCount = 0
 
-    override var rootViewController:UIViewController? {
+    override var rootViewController: UIViewController? {
         didSet {
             rootViewControllerSetterCount += 1
         }
@@ -65,12 +65,12 @@ class IVGACApplicationDelegateSpec: QuickSpec {
                 testContainer = ApplicationContainer(window: TestWindow())
                 testService = BaseTestService(container: testContainer)!
                 testContainer.addService(testService, forProtocol: LifeCycleType.self)
-                appDelegate = TestIVGACApplicationDelegate(testContainer:testContainer)
+                appDelegate = TestIVGACApplicationDelegate(testContainer: testContainer)
             }
 
-            describe("should call once for each service in order:") {
+            describe("should call once for each service in order: ") {
                 it("service.willFinishLaunching") {
-                    let result = appDelegate.application(self.mockApplication, willFinishLaunchingWithOptions:nil)
+                    let result = appDelegate.application(self.mockApplication, willFinishLaunchingWithOptions: nil)
                     expect(result).to(beTrue())
                     expect(testService.trackerKeys).to(equal(["willFinishLaunching()"]))
                     expect(testService.trackerCount).to(equal(1))
@@ -78,7 +78,7 @@ class IVGACApplicationDelegateSpec: QuickSpec {
 
                 it("service.didFinishLaunching") {
                     appDelegate.container = testContainer
-                    let result = appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions:nil)
+                    let result = appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions: nil)
                     expect(result).to(beTrue())
                     expect(testService.trackerKeys).to(equal(["didFinishLaunching()"]))
                     expect(testService.trackerCount).to(equal(1))
@@ -126,12 +126,12 @@ class IVGACApplicationDelegateSpec: QuickSpec {
                 let container = ApplicationContainer(window: testWindow)
                 testAppCoordinator = TestAppCoordinator(container: container)
                 container.addCoordinator(testAppCoordinator, forProtocol: CoordinatorType.self)
-                appDelegate = TestIVGACApplicationDelegate(testContainer:container)
+                appDelegate = TestIVGACApplicationDelegate(testContainer: container)
             }
 
             it("should call makeKeyAndVisible") {
                 appDelegate.window = testWindow
-                _ = appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions:nil)
+                _ = appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions: nil)
                 expect(testWindow.makeKeyAndVisibleCallCount).to(equal(1))
            }
 

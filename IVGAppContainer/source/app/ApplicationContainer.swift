@@ -62,7 +62,7 @@ open class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public let router:RouterType
+    public let router: RouterType
 
     public required init(window: UIWindow?) {
         self.window = window
@@ -137,20 +137,20 @@ open class ApplicationContainer : ApplicationContainerType {
 
             // if container state has progressed past uninitialized, then call methods that were missed
             switch self._containerState {
-            case .launching:
+            case .launching: 
                 _ = lifeCycleService.willFinishLaunching()
-            case .inactive:
+            case .inactive: 
                 _ = lifeCycleService.willFinishLaunching()
                 _ = lifeCycleService.didFinishLaunching()
-            case .active:
+            case .active: 
                 _ = lifeCycleService.willFinishLaunching()
                 _ = lifeCycleService.didFinishLaunching()
                 _ = lifeCycleService.didBecomeActive()
-            case .background:
+            case .background: 
                 _ = lifeCycleService.willFinishLaunching()
                 _ = lifeCycleService.didFinishLaunching()
                 _ = lifeCycleService.didEnterBackground()
-            default:
+            default: 
                 break // no extra steps necessary
             }
         }
@@ -268,10 +268,10 @@ open class ApplicationContainer : ApplicationContainerType {
 
     // MARK: - Private variables
 
-    private var resourcesMap: [TypeKey: Any] = [:]
-    private var servicesMap: [TypeKey: Any] = [:]
+    private var resourcesMap: [TypeKey: Any] = [: ]
+    private var servicesMap: [TypeKey: Any] = [: ]
     private var serviceKeyOrder: [TypeKey] = []
-    private var coordinatorsMap: [TypeKey: CoordinatorType] = [:]
+    private var coordinatorsMap: [TypeKey: CoordinatorType] = [: ]
     private let synchronizer = Synchronizer()
     private var _containerState: ContainerState = .uninitialized
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol UserDefaultsServiceType {
-    func value<T>(_ key: String, valueType:T.Type) -> T?
+    func value<T>(_ key: String, valueType: T.Type) -> T?
     func setValue<T>(_ value: T, forKey key: String)
     func removeValueForKey(_ key: String)
 }
@@ -26,7 +26,7 @@ public class UserDefaultsService: UserDefaultsServiceType {
         self.userDefaults = userDefaults
     }
 
-    public func value<T>(_ key: String, valueType:T.Type) -> T? {
+    public func value<T>(_ key: String, valueType: T.Type) -> T? {
         if T.self == String.self {
             return userDefaults.string(forKey: key) as! T?
         } else if T.self == Int.self {

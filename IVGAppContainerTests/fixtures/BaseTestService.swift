@@ -17,8 +17,8 @@ class BaseTestService : TrackableTestClass, LifeCycleType {
     required init?(container: ApplicationContainerType) {
     }
 
-    convenience init(container: ApplicationContainerType, willFinishLaunchingValue:Bool, didFinishLaunchingValue:Bool) {
-        self.init(container:container)!
+    convenience init(container: ApplicationContainerType, willFinishLaunchingValue: Bool, didFinishLaunchingValue: Bool) {
+        self.init(container: container)!
         self.willFinishLaunchingValue = willFinishLaunchingValue
         self.didFinishLaunchingValue = didFinishLaunchingValue
     }

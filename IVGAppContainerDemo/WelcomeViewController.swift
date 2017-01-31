@@ -10,7 +10,7 @@ import UIKit
 
 class WelcomeViewController : UIViewController {
 
-    var nextAction:(Void -> Void)?
+    var nextAction: (Void -> Void)?
 
     @IBAction func nextAction(button: UIButton) {
         print("nextAction")

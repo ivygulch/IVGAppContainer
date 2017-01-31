@@ -10,7 +10,7 @@ import UIKit
 
 class WrapperViewController : UIViewController {
 
-    var unwrapAction:(Void -> Void)?
+    var unwrapAction: (Void -> Void)?
 
     @IBAction func unwrapAction(button: UIButton) {
         print("unwrapAction")

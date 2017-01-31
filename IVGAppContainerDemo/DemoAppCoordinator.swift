@@ -20,8 +20,8 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
     let nextSegmentIdentifier = Identifier(name: "DemoAppCoordinator.next")
     let wrapperSegmentIdentifier = Identifier(name: "DemoAppCoordinator.wrapper")
 
-    lazy var welcomeRouteSequence:[Any] = [self.rootSegmentIdentifier,self.welcomeSegmentIdentifier]
-    lazy var nextRouteSequence:[Any] = [self.rootSegmentIdentifier,self.welcomeSegmentIdentifier,self.nextSegmentIdentifier]
+    lazy var welcomeRouteSequence: [Any] = [self.rootSegmentIdentifier,self.welcomeSegmentIdentifier]
+    lazy var nextRouteSequence: [Any] = [self.rootSegmentIdentifier,self.welcomeSegmentIdentifier,self.nextSegmentIdentifier]
 
     required init(container: ApplicationContainerType) {
         self.container = container
@@ -39,7 +39,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: rootSegmentIdentifier,
             presenterIdentifier: RootRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController:{ return { return RootViewController() } }
+            loadViewController: { return { return RootViewController() } }
         )
     }
 
@@ -48,7 +48,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: welcomeSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController:{ return {
+            loadViewController: { return {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(WelcomeViewController)) as! WelcomeViewController
                 result.nextAction = {
                     self.container.router.executeRoute(self.nextRouteSequence) { _ in }
@@ -63,7 +63,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: nextSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController:{ return {
+            loadViewController: { return {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(NextScreenViewController)) as! NextScreenViewController
 
                 result.navigationItem.hidesBackButton = true
@@ -86,7 +86,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: wrapperSegmentIdentifier,
             presenterIdentifier: WrappingRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController:{ return {
+            loadViewController: { return {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(WrapperViewController)) as! WrapperViewController
 
                 result.unwrapAction = {

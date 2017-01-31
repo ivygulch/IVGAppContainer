@@ -28,10 +28,10 @@ class ApplicationContainerTypeSpec: QuickSpec {
 
     override func spec() {
         describe("ApplicationContainerType dependency injection") {
-            var applicationContainer:ApplicationContainerType!
-            var resource:BaseTestResource!
-            var service:BaseTestService!
-            var coordinator:BaseTestCoordinator!
+            var applicationContainer: ApplicationContainerType!
+            var resource: BaseTestResource!
+            var service: BaseTestService!
+            var coordinator: BaseTestCoordinator!
 
             beforeEach {
                 applicationContainer = ApplicationContainer(window: TestWindow())
@@ -75,8 +75,8 @@ class ApplicationContainerTypeSpec: QuickSpec {
         }
 
         describe("ApplicationContainerType lifecycle event") {
-            var applicationContainer:ApplicationContainerType!
-            var services:[BaseTestService]!
+            var applicationContainer: ApplicationContainerType!
+            var services: [BaseTestService]!
 
             beforeEach {
                 applicationContainer = ApplicationContainer(window: TestWindow())
@@ -84,23 +84,23 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 for _ in 0..<10 {
                     services.append(BaseTestService(container: applicationContainer)!)
                 }
-                applicationContainer.addService(services[0], forProtocol:TestServiceTypeA.self)
-                applicationContainer.addService(services[1], forProtocol:TestServiceTypeB.self)
-                applicationContainer.addService(services[2], forProtocol:TestServiceTypeC.self)
-                applicationContainer.addService(services[3], forProtocol:TestServiceTypeD.self)
-                applicationContainer.addService(services[4], forProtocol:TestServiceTypeE.self)
-                applicationContainer.addService(services[5], forProtocol:TestServiceTypeF.self)
-                applicationContainer.addService(services[6], forProtocol:TestServiceTypeG.self)
-                applicationContainer.addService(services[7], forProtocol:TestServiceTypeH.self)
-                applicationContainer.addService(services[8], forProtocol:TestServiceTypeI.self)
-                applicationContainer.addService(services[9], forProtocol:TestServiceTypeJ.self)
+                applicationContainer.addService(services[0], forProtocol: TestServiceTypeA.self)
+                applicationContainer.addService(services[1], forProtocol: TestServiceTypeB.self)
+                applicationContainer.addService(services[2], forProtocol: TestServiceTypeC.self)
+                applicationContainer.addService(services[3], forProtocol: TestServiceTypeD.self)
+                applicationContainer.addService(services[4], forProtocol: TestServiceTypeE.self)
+                applicationContainer.addService(services[5], forProtocol: TestServiceTypeF.self)
+                applicationContainer.addService(services[6], forProtocol: TestServiceTypeG.self)
+                applicationContainer.addService(services[7], forProtocol: TestServiceTypeH.self)
+                applicationContainer.addService(services[8], forProtocol: TestServiceTypeI.self)
+                applicationContainer.addService(services[9], forProtocol: TestServiceTypeJ.self)
             }
 
             describe("willFinishLaunching") {
                 it("should call service.willFinishLaunching once for each service in order") {
                     let result = applicationContainer.willFinishLaunching()
                     expect(result).to(beTrue())
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willFinishLaunching()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -117,7 +117,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("should call service.didFinishLaunching once for each service in order") {
                     let result = applicationContainer.didFinishLaunching()
                     expect(result).to(beTrue())
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didFinishLaunching()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -133,7 +133,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("didBecomeActive") {
                 it("should call service.didBecomeActive once for each service in order") {
                     applicationContainer.didBecomeActive()
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didBecomeActive()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -149,7 +149,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willResignActive") {
                 it("should call service.willResignActive once for each service in order") {
                     applicationContainer.willResignActive()
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willResignActive()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -165,7 +165,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willTerminate") {
                 it("should call service.willTerminate once for each service in order") {
                     applicationContainer.willTerminate()
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willTerminate()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -181,7 +181,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("didEnterBackground") {
                 it("should call service.didEnterBackground once for each service in order") {
                     applicationContainer.didEnterBackground()
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didEnterBackground()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -197,7 +197,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willEnterForeground") {
                 it("should call service.willEnterForeground once for each service in order") {
                     applicationContainer.willEnterForeground()
-                    var previousTimestamp:Date?
+                    var previousTimestamp: Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willEnterForeground()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -219,9 +219,9 @@ class ApplicationContainerTypeSpec: QuickSpec {
                     let serviceA = BaseTestService(container: applicationContainer)!
                     let serviceB = BaseTestService(container: applicationContainer, willFinishLaunchingValue: false, didFinishLaunchingValue: true)
                     let serviceC = BaseTestService(container: applicationContainer)!
-                    applicationContainer.addService(serviceA, forProtocol:TestServiceTypeA.self)
-                    applicationContainer.addService(serviceB, forProtocol:TestServiceTypeB.self)
-                    applicationContainer.addService(serviceC, forProtocol:TestServiceTypeC.self)
+                    applicationContainer.addService(serviceA, forProtocol: TestServiceTypeA.self)
+                    applicationContainer.addService(serviceB, forProtocol: TestServiceTypeB.self)
+                    applicationContainer.addService(serviceC, forProtocol: TestServiceTypeC.self)
 
                     let result = applicationContainer.willFinishLaunching()
                     expect(result).to(beFalse())
@@ -242,9 +242,9 @@ class ApplicationContainerTypeSpec: QuickSpec {
                     let serviceA = BaseTestService(container: applicationContainer)!
                     let serviceB = BaseTestService(container: applicationContainer, willFinishLaunchingValue: true, didFinishLaunchingValue: false)
                     let serviceC = BaseTestService(container: applicationContainer)!
-                    applicationContainer.addService(serviceA, forProtocol:TestServiceTypeA.self)
-                    applicationContainer.addService(serviceB, forProtocol:TestServiceTypeB.self)
-                    applicationContainer.addService(serviceC, forProtocol:TestServiceTypeC.self)
+                    applicationContainer.addService(serviceA, forProtocol: TestServiceTypeA.self)
+                    applicationContainer.addService(serviceB, forProtocol: TestServiceTypeB.self)
+                    applicationContainer.addService(serviceC, forProtocol: TestServiceTypeC.self)
 
                     let result = applicationContainer.didFinishLaunching()
                     expect(result).to(beFalse())
@@ -259,8 +259,8 @@ class ApplicationContainerTypeSpec: QuickSpec {
 
         describe("ApplicationContainerType") {
 
-            var applicationContainer:ApplicationContainerType!
-            var service:BaseTestService!
+            var applicationContainer: ApplicationContainerType!
+            var service: BaseTestService!
 
             beforeEach {
                 applicationContainer = ApplicationContainer(window: TestWindow())
@@ -271,7 +271,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("willFinishLaunching, should call service.willFinishLaunching when added") {
                     expect(service.trackerCount).to(equal(0))
                     _ = applicationContainer.willFinishLaunching()
-                    applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
+                    applicationContainer.addService(service, forProtocol: TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()"]))
                     expect(service.trackerCount).to(equal(1))
@@ -280,7 +280,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("didFinishLaunching, should call service.willFinishLaunching/didFinishLaunching when added") {
                     expect(service.trackerCount).to(equal(0))
                     _ = applicationContainer.didFinishLaunching()
-                    applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
+                    applicationContainer.addService(service, forProtocol: TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()","didFinishLaunching()"]))
                     expect(service.trackerCount).to(equal(2))
@@ -289,7 +289,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("didFinishLaunching, should call service.willFinishLaunching/didFinishLaunching/didBecomeActive when added") {
                     expect(service.trackerCount).to(equal(0))
                     applicationContainer.didBecomeActive()
-                    applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
+                    applicationContainer.addService(service, forProtocol: TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()","didFinishLaunching()","didBecomeActive()"]))
                     expect(service.trackerCount).to(equal(3))
@@ -298,7 +298,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("didEnterBackground, should call service.willFinishLaunching/didFinishLaunching/didEnterBackground when added") {
                     expect(service.trackerCount).to(equal(0))
                     applicationContainer.didEnterBackground()
-                    applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
+                    applicationContainer.addService(service, forProtocol: TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()","didFinishLaunching()","didEnterBackground()"]))
                     expect(service.trackerCount).to(equal(3))
