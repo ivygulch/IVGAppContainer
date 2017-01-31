@@ -15,7 +15,7 @@ class BaseTestCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
     }
 
-    func registerRouteSegments(router: RouterType) {
+    func registerRouteSegments(_ router: RouterType) {
 
     }
 }

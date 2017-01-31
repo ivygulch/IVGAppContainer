@@ -100,7 +100,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("should call service.willFinishLaunching once for each service in order") {
                     let result = applicationContainer.willFinishLaunching()
                     expect(result).to(beTrue())
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willFinishLaunching()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -117,7 +117,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 it("should call service.didFinishLaunching once for each service in order") {
                     let result = applicationContainer.didFinishLaunching()
                     expect(result).to(beTrue())
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didFinishLaunching()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -133,7 +133,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("didBecomeActive") {
                 it("should call service.didBecomeActive once for each service in order") {
                     applicationContainer.didBecomeActive()
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didBecomeActive()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -149,7 +149,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willResignActive") {
                 it("should call service.willResignActive once for each service in order") {
                     applicationContainer.willResignActive()
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willResignActive()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -165,7 +165,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willTerminate") {
                 it("should call service.willTerminate once for each service in order") {
                     applicationContainer.willTerminate()
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willTerminate()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -181,7 +181,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("didEnterBackground") {
                 it("should call service.didEnterBackground once for each service in order") {
                     applicationContainer.didEnterBackground()
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["didEnterBackground()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -197,7 +197,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("willEnterForeground") {
                 it("should call service.willEnterForeground once for each service in order") {
                     applicationContainer.willEnterForeground()
-                    var previousTimestamp:NSDate?
+                    var previousTimestamp:Date?
                     for service in services {
                         expect(service.trackerKeys).to(equal(["willEnterForeground()"]))
                         expect(service.trackerCount).to(equal(1))
@@ -270,7 +270,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
             describe("after calling") {
                 it("willFinishLaunching, should call service.willFinishLaunching when added") {
                     expect(service.trackerCount).to(equal(0))
-                    applicationContainer.willFinishLaunching()
+                    _ = applicationContainer.willFinishLaunching()
                     applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()"]))
@@ -279,7 +279,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
 
                 it("didFinishLaunching, should call service.willFinishLaunching/didFinishLaunching when added") {
                     expect(service.trackerCount).to(equal(0))
-                    applicationContainer.didFinishLaunching()
+                    _ = applicationContainer.didFinishLaunching()
                     applicationContainer.addService(service, forProtocol:TestServiceTypeA.self)
 
                     expect(service.trackerKeys).to(equal(["willFinishLaunching()","didFinishLaunching()"]))

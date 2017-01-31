@@ -10,7 +10,7 @@ import Quick
 import Nimble
 import IVGAppContainer
 
-class TestNSUserDefaults : NSUserDefaults {
+class TestNSUserDefaults : UserDefaults {
     var synchronizeCallCount = 0
 
     override func synchronize() -> Bool {
@@ -86,7 +86,7 @@ class UserDefaultsServiceSpec: QuickSpec {
                     let expectedValue = URL(string: "http://example.com")!
                     let key = "key"
                     userDefaultsService.setValue(expectedValue, forKey:key)
-                    let actualValue = userDefaultsService.value(key, valueType: NSURL.self)
+                    let actualValue = userDefaultsService.value(key, valueType: URL.self)
                     expect(actualValue).to(equal(expectedValue))
                 }
             }

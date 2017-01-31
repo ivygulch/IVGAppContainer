@@ -9,12 +9,12 @@
 import Foundation
 
 protocol TrackableTestClassType {
-    var trackerLog:[(String,NSDate)] { get }
-    var tracker:[String:[NSDate]] { get }
+    var trackerLog:[(String,Date)] { get }
+    var tracker:[String:[Date]] { get }
     var trackerKeys:Set<String> { get }
     var trackerCount:Int { get }
 
-    func track(key:String)
+    func track(_ key:String)
 }
 
 protocol TrackableTestClassProxy : TrackableTestClassType {
@@ -22,10 +22,10 @@ protocol TrackableTestClassProxy : TrackableTestClassType {
 }
 
 extension TrackableTestClassProxy {
-    var trackerLog:[(String,NSDate)] {
+    var trackerLog:[(String,Date)] {
         return trackableTestClass.trackerLog
     }
-    var tracker:[String:[NSDate]] {
+    var tracker:[String:[Date]] {
         return trackableTestClass.tracker
     }
     var trackerKeys:Set<String> {
@@ -35,25 +35,25 @@ extension TrackableTestClassProxy {
         return trackableTestClass.trackerCount
     }
 
-    func track(key:String) {
+    func track(_ key:String) {
         trackableTestClass.track(key)
     }
 }
 
 class TrackableTestClass : TrackableTestClassType {
-    var trackerLog:[(String,NSDate)] = []
-    var tracker:[String:[NSDate]] = [:]
+    var trackerLog:[(String,Date)] = []
+    var tracker:[String:[Date]] = [:]
     var trackerKeys:Set<String> {
         return Set(tracker.keys)
     }
     var trackerCount:Int {
-        return tracker.values.reduce(0,combine:{$0 + $1.count})
+        return tracker.values.reduce(0,{$0 + $1.count})
     }
 
-    func track(key:String) {
-        let timestamp = NSDate()
+    func track(_ key:String) {
+        let timestamp = Date()
 
-        var timestamps:[NSDate] = tracker[key] ?? []
+        var timestamps:[Date] = tracker[key] ?? []
         timestamps.append(timestamp)
         tracker[key] = timestamps
         trackerLog.append((key,timestamp))

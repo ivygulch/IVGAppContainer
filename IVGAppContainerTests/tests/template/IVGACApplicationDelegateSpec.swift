@@ -18,11 +18,11 @@ class TestIVGACApplicationDelegate : IVGACApplicationDelegate<ApplicationContain
         self.testContainer = testContainer
     }
 
-    override func createApplicationContainer(window: UIWindow?) -> ApplicationContainer {
+    override func createApplicationContainer(_ window: UIWindow?) -> ApplicationContainer {
         return testContainer
     }
 
-    override func configureApplicationContainer(container: ApplicationContainer) {
+    override func configureApplicationContainer(_ container: ApplicationContainer) {
     }
 }
 
@@ -30,7 +30,7 @@ class TestAppCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
     }
 
-    func registerRouteSegments(router: RouterType) {
+    func registerRouteSegments(_ router: RouterType) {
 
     }
 
@@ -53,7 +53,7 @@ class TestWindow: UIWindow {
 
 class IVGACApplicationDelegateSpec: QuickSpec {
 
-    var mockApplication: UIApplication = UIApplication.sharedApplication()
+    var mockApplication: UIApplication = UIApplication.shared
 
     override func spec() {
         describe("IVGACApplicationDelegate dependency injection") {
@@ -131,7 +131,7 @@ class IVGACApplicationDelegateSpec: QuickSpec {
 
             it("should call makeKeyAndVisible") {
                 appDelegate.window = testWindow
-                appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions:nil)
+                _ = appDelegate.application(self.mockApplication, didFinishLaunchingWithOptions:nil)
                 expect(testWindow.makeKeyAndVisibleCallCount).to(equal(1))
            }
 
