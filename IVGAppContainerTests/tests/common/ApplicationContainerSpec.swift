@@ -9,7 +9,7 @@
 import Foundation
 import Quick
 import Nimble
-import IVGAppContainer
+@testable import IVGAppContainer
 
 protocol TestServiceTypeA : LifeCycleType {}
 protocol TestServiceTypeB : LifeCycleType {}
