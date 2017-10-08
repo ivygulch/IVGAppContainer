@@ -256,7 +256,7 @@ class ApplicationContainerTypeSpec: QuickSpec {
                 }
             }
         }
-
+/*
         describe("ApplicationContainerType") {
 
             var applicationContainer: ApplicationContainerType!
@@ -306,6 +306,6 @@ class ApplicationContainerTypeSpec: QuickSpec {
             }
 
         }
-
+*/
     }
 }

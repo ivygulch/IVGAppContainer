@@ -39,7 +39,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: rootSegmentIdentifier,
             presenterIdentifier: RootRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController: { return RootViewController() }
+            loadViewController: { { return RootViewController() } }
         )
     }
 
@@ -48,13 +48,13 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: welcomeSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController: {
+            loadViewController: { {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WelcomeViewController.self)) as! WelcomeViewController
                 result.nextAction = {
                     self.container.router.execute(route: self.nextRouteSequence) { _ in }
                 }
                 return result
-                }
+                } }
         )
     }
 
@@ -63,7 +63,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: nextSegmentIdentifier,
             presenterIdentifier: PushRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController: {
+            loadViewController: { {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: NextScreenViewController.self)) as! NextScreenViewController
 
                 result.navigationItem.hidesBackButton = true
@@ -77,7 +77,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
                     self.container.router.append(route: [self.wrapperSegmentIdentifier]) { _ in }
                 }
                 return result
-                }
+                } }
         )
     }
 
@@ -86,14 +86,14 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             segmentIdentifier: wrapperSegmentIdentifier,
             presenterIdentifier: WrappingRouteSegmentPresenter.defaultPresenterIdentifier,
             isSingleton: true,
-            loadViewController: {
+            loadViewController: { {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WrapperViewController.self)) as! WrapperViewController
 
                 result.unwrapAction = {
                     print("do unwrap")
                 }
                 return result
-                } 
+                } }
         )
     }
 

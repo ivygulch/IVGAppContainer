@@ -24,7 +24,7 @@ public protocol ApplicationContainerType: class {
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
     var router: RouterType { get }
-    var startupAction: ((Void) -> Void)? { get }
+    var startupAction: (() -> Void)? { get }
     func executeStartupAction()
 
     var resourceCount: Int { get }
@@ -70,7 +70,7 @@ open class ApplicationContainer : ApplicationContainerType {
         router.registerDefaultPresenters()
     }
 
-    public var startupAction: ((Void) -> Void)?
+    public var startupAction: (() -> Void)?
 
     public func executeStartupAction() {
         if let startupAction = startupAction {

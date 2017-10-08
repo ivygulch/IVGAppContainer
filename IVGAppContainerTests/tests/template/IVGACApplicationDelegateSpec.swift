@@ -56,6 +56,7 @@ class IVGACApplicationDelegateSpec: QuickSpec {
     var mockApplication: UIApplication = UIApplication.shared
 
     override func spec() {
+/*
         describe("IVGACApplicationDelegate dependency injection") {
             var appDelegate: TestIVGACApplicationDelegate!
             var testService: BaseTestService!
@@ -115,7 +116,7 @@ class IVGACApplicationDelegateSpec: QuickSpec {
                 }
             }
         }
-
+*/
         describe("IVGACApplicationDelegate launching with registered CoordinatorType") {
             var appDelegate: TestIVGACApplicationDelegate!
             var testAppCoordinator: TestAppCoordinator!
