@@ -16,7 +16,7 @@ public protocol UserDefaultsServiceType {
 
 public class UserDefaultsService: UserDefaultsServiceType {
 
-    public required init?(container: ApplicationContainerType) {
+    public required init(container: ApplicationContainerType) {
         self.container = container
         self.userDefaults = UserDefaults.standard
     }
@@ -39,6 +39,9 @@ public class UserDefaultsService: UserDefaultsServiceType {
             return userDefaults.bool(forKey: key) as? T
         } else if T.self == URL.self {
             return userDefaults.url(forKey: key) as? T
+        } else if T.self == Date.self {
+            let timeInterval = userDefaults.double(forKey: key) as Double
+            return Date(timeIntervalSinceReferenceDate: timeInterval) as? T
         }
 
         return nil
@@ -57,6 +60,8 @@ public class UserDefaultsService: UserDefaultsServiceType {
             userDefaults.set(value, forKey: key)
         } else if let value = value as? URL {
             userDefaults.set(value, forKey: key)
+        } else if let value = value as? Date {
+            userDefaults.set(value.timeIntervalSinceReferenceDate, forKey: key)
         }
     }
 

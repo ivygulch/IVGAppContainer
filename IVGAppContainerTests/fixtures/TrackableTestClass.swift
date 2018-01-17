@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import IVGFoundation
 
 protocol TrackableTestClassType {
     var trackerLog: [(String,Date)] { get }
@@ -51,7 +52,7 @@ class TrackableTestClass : TrackableTestClassType {
     }
 
     func track(_ key: String) {
-        let timestamp = Date()
+        let timestamp = Clock.sharedClock.currentDate
 
         var timestamps: [Date] = tracker[key] ?? []
         timestamps.append(timestamp)
