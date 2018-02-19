@@ -23,7 +23,7 @@ public protocol ApplicationContainerType: class {
     init(window: UIWindow?)
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
-    var router: RouterType { get }
+    var routerProvider: RouterProvider? { get }
     var startupAction: (() -> Void)? { get }
     func executeStartupAction()
 
@@ -62,12 +62,11 @@ open class ApplicationContainer : ApplicationContainerType {
         }
     }
 
-    public let router: RouterType
+    public var routerProvider: RouterProvider?
+    public var router: RouterType? { return routerProvider?(window) }
 
     public required init(window: UIWindow?) {
         self.window = window
-        router = Router(window: window)
-        router.registerDefaultPresenters()
     }
 
     public var startupAction: (() -> Void)?
@@ -178,7 +177,6 @@ open class ApplicationContainer : ApplicationContainerType {
         synchronizer.execute {
             self.coordinatorsMap[TypeKey(T.self)] = coordinator
         }
-        coordinator.registerRouteSegments(withRouter: router)
     }
 
     // MARK: - Lifecycle

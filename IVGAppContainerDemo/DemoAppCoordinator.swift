@@ -27,11 +27,11 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
         self.container = container
     }
 
-    func registerRouteSegments(withRouter router: RouterType) {
-        router.register(routeSegment: buildRootSegment())
-        router.register(routeSegment: buildWelcomeSegment())
-        router.register(routeSegment: buildNextSegment())
-        router.register(routeSegment: buildWrapperSegment())
+    func registerRouteSegments(withRouterContext routerContext: RouterContextType) {
+        routerContext.register(routeSegment: buildRootSegment())
+        routerContext.register(routeSegment: buildWelcomeSegment())
+        routerContext.register(routeSegment: buildNextSegment())
+        routerContext.register(routeSegment: buildWrapperSegment())
     }
 
     fileprivate func buildRootSegment() -> VisualRouteSegment {
@@ -51,7 +51,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             loadViewController: { {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WelcomeViewController.self)) as! WelcomeViewController
                 result.nextAction = {
-                    self.container.router.execute(route: self.nextRouteSequence) { _ in }
+                    self.container.router?.execute(route: self.nextRouteSequence) { _ in }
                 }
                 return result
                 } }
@@ -71,10 +71,10 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
                 result.navigationItem.leftBarButtonItem = newBackButton;
 
                 result.returnAction = {
-                    self.container.router.execute(route: self.welcomeRouteSequence) { _ in }
+                    self.container.router?.execute(route: self.welcomeRouteSequence) { _ in }
                 }
                 result.wrapAction = {
-                    self.container.router.append(route: [self.wrapperSegmentIdentifier]) { _ in }
+                    self.container.router?.append(route: [self.wrapperSegmentIdentifier]) { _ in }
                 }
                 return result
                 } }
@@ -98,7 +98,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
     }
 
     @objc func nextScreenBack(_ bbi: UIBarButtonItem) {
-        self.container.router.execute(route: self.welcomeRouteSequence) { _ in }
+        self.container.router?.execute(route: self.welcomeRouteSequence) { _ in }
     }
     
     let container: ApplicationContainerType

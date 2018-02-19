@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import IVGRouter
 
 open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, UIApplicationDelegate {
 

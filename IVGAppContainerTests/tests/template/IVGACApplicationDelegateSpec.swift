@@ -30,7 +30,7 @@ class TestAppCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
     }
 
-    func registerRouteSegments(withRouter router: RouterType) {
+    func registerRouteSegments(withRouterContext routerContext: RouterContextType) {
 
     }
 

@@ -16,7 +16,7 @@ class AppDelegate: IVGACApplicationDelegate<ApplicationContainer> {
         let appCoordinator = DemoAppCoordinator(container: container)
         container.addCoordinator(appCoordinator, forProtocol: DemoAppCoordinatorType.self)
         container.startupAction = {
-            container.router.execute(route: appCoordinator.welcomeRouteSequence) { _ in }
+            container.router?.execute(route: appCoordinator.welcomeRouteSequence) { _ in }
         }
     }
 
