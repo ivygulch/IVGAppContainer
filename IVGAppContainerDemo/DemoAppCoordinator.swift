@@ -51,7 +51,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
             loadViewController: { {
                 let result = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WelcomeViewController.self)) as! WelcomeViewController
                 result.nextAction = {
-                    self.container.router?.execute(route: self.nextRouteSequence) { _ in }
+                    self.router.execute(route: self.nextRouteSequence) { _ in }
                 }
                 return result
                 } }
@@ -71,10 +71,10 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
                 result.navigationItem.leftBarButtonItem = newBackButton;
 
                 result.returnAction = {
-                    self.container.router?.execute(route: self.welcomeRouteSequence) { _ in }
+                    self.router.execute(route: self.welcomeRouteSequence) { _ in }
                 }
                 result.wrapAction = {
-                    self.container.router?.append(route: [self.wrapperSegmentIdentifier]) { _ in }
+                    self.router.append(route: [self.wrapperSegmentIdentifier]) { _ in }
                 }
                 return result
                 } }
@@ -98,7 +98,7 @@ class DemoAppCoordinator: DemoAppCoordinatorType {
     }
 
     @objc func nextScreenBack(_ bbi: UIBarButtonItem) {
-        self.container.router?.execute(route: self.welcomeRouteSequence) { _ in }
+        self.router.execute(route: self.welcomeRouteSequence) { _ in }
     }
     
     let container: ApplicationContainerType

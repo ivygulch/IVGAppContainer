@@ -19,6 +19,10 @@ public enum ContainerState {
     case terminating
 }
 
+public enum ContainerErrors : Error {
+    case routerRequired(String)
+}
+
 public protocol ApplicationContainerType: class {
     init(window: UIWindow?)
     var window: UIWindow? { get }
@@ -63,7 +67,13 @@ open class ApplicationContainer : ApplicationContainerType {
     }
 
     public var routerProvider: RouterProvider?
-    public var router: RouterType? { return routerProvider?(window) }
+
+    public func router(forKey key: String) throws -> RouterType {
+        guard let result = routerProvider?(key,window) else {
+            throw ContainerErrors.routerRequired(key)
+        }
+        return result
+    }
 
     public required init(window: UIWindow?) {
         self.window = window
