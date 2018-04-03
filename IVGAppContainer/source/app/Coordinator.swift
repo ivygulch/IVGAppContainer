@@ -10,5 +10,9 @@ import Foundation
 import IVGRouter
 
 public protocol CoordinatorType {
-    func registerRouteSegments(withRouterContext routerContext: RouterContextType)
+    var identifier: Identifier { get }
+}
+
+public extension CoordinatorType {
+    var identifier: Identifier { return Identifier(name: String(describing: type(of: self))) }
 }
