@@ -8,7 +8,6 @@
 
 import UIKit
 import IVGFoundation
-import IVGRouter
 
 public enum ContainerState {
     case uninitialized
@@ -19,15 +18,10 @@ public enum ContainerState {
     case terminating
 }
 
-public enum ContainerErrors : Error {
-    case routerRequired(String)
-}
-
 public protocol ApplicationContainerType: class {
     init(window: UIWindow?)
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
-    var routerProvider: RouterProvider? { get }
     var startupAction: (() -> Void)? { get }
     func executeStartupAction()
 
@@ -64,15 +58,6 @@ open class ApplicationContainer : ApplicationContainerType {
                 self._containerState = newValue
             }
         }
-    }
-
-    public var routerProvider: RouterProvider?
-
-    public func router(forKey key: String) throws -> RouterType {
-        guard let result = routerProvider?(key,window) else {
-            throw ContainerErrors.routerRequired(key)
-        }
-        return result
     }
 
     public required init(window: UIWindow?) {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F808DCDD1CB5911E003B6D56 /* LazyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808DCDC1CB5911E003B6D56 /* LazyViewController.swift */; };
 		F85F92BF1DA1820A00241AB7 /* IVGFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */; };
-		F8AB8D281CCD24B500E50ABD /* IVGRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */; };
+		F899DC4F2073DD5100094784 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F899DC4E2073DD5100094784 /* Identifier.swift */; };
 		F8AB8D2B1CCD24BE00E50ABD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D291CCD24BE00E50ABD /* Nimble.framework */; };
 		F8AB8D2C1CCD24BE00E50ABD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */; };
 		F8B1991A1CB4B577005C49C5 /* IVGAppContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B1990F1CB4B577005C49C5 /* IVGAppContainer.framework */; };
@@ -27,25 +27,9 @@
 		F8B199B01CB4CAF7005C49C5 /* ApplicationContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199A11CB4CAF7005C49C5 /* ApplicationContainerSpec.swift */; };
 		F8B199B11CB4CAF7005C49C5 /* UserDefaultsServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199A71CB4CAF7005C49C5 /* UserDefaultsServiceSpec.swift */; };
 		F8B199B21CB4CAF7005C49C5 /* IVGACApplicationDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199A91CB4CAF7005C49C5 /* IVGACApplicationDelegateSpec.swift */; };
-		F8B199C31CB4CB0A005C49C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199B31CB4CB0A005C49C5 /* AppDelegate.swift */; };
-		F8B199C41CB4CB0A005C49C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8B199B41CB4CB0A005C49C5 /* Assets.xcassets */; };
-		F8B199C71CB4CB0A005C49C5 /* DemoAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199BA1CB4CB0A005C49C5 /* DemoAppCoordinator.swift */; };
-		F8B199CD1CB4CB0A005C49C5 /* NextScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199C01CB4CB0A005C49C5 /* NextScreenViewController.swift */; };
-		F8B199CE1CB4CB0A005C49C5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199C11CB4CB0A005C49C5 /* RootViewController.swift */; };
-		F8B199CF1CB4CB0A005C49C5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B199C21CB4CB0A005C49C5 /* WelcomeViewController.swift */; };
-		F8B199D41CB4CB23005C49C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B199D01CB4CB23005C49C5 /* LaunchScreen.storyboard */; };
-		F8B199D51CB4CB23005C49C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B199D21CB4CB23005C49C5 /* Main.storyboard */; };
-		F8C074331CB88BB000C75A84 /* WrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C074321CB88BB000C75A84 /* WrapperViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F808DCE01CB5C17D003B6D56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F8B199061CB4B577005C49C5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F8B1990E1CB4B577005C49C5;
-			remoteInfo = IVGAppContainer;
-		};
 		F8B1991B1CB4B577005C49C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F8B199061CB4B577005C49C5 /* Project object */;
@@ -58,14 +42,13 @@
 /* Begin PBXFileReference section */
 		F808DCDC1CB5911E003B6D56 /* LazyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyViewController.swift; sourceTree = "<group>"; };
 		F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IVGFoundation.framework; path = "external/IVGFoundation/build/Debug-iphoneos/IVGFoundation.framework"; sourceTree = "<group>"; };
-		F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IVGRouter.framework; path = "external/IVGRouter/build/Debug-iphoneos/IVGRouter.framework"; sourceTree = "<group>"; };
+		F899DC4E2073DD5100094784 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		F8AB8D291CCD24BE00E50ABD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "external/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "external/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		F8B1990F1CB4B577005C49C5 /* IVGAppContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IVGAppContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B199141CB4B577005C49C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8B199191CB4B577005C49C5 /* IVGAppContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IVGAppContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B199201CB4B577005C49C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8B1992D1CB4C73F005C49C5 /* IVGAppContainerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IVGAppContainerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B1997B1CB4CA67005C49C5 /* ApplicationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationContainer.swift; sourceTree = "<group>"; };
 		F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCycleType.swift; sourceTree = "<group>"; };
@@ -80,17 +63,6 @@
 		F8B199A11CB4CAF7005C49C5 /* ApplicationContainerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationContainerSpec.swift; sourceTree = "<group>"; };
 		F8B199A71CB4CAF7005C49C5 /* UserDefaultsServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceSpec.swift; sourceTree = "<group>"; };
 		F8B199A91CB4CAF7005C49C5 /* IVGACApplicationDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IVGACApplicationDelegateSpec.swift; sourceTree = "<group>"; };
-		F8B199B31CB4CB0A005C49C5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8B199B41CB4CB0A005C49C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F8B199BA1CB4CB0A005C49C5 /* DemoAppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAppCoordinator.swift; sourceTree = "<group>"; };
-		F8B199BD1CB4CB0A005C49C5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8B199C01CB4CB0A005C49C5 /* NextScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextScreenViewController.swift; sourceTree = "<group>"; };
-		F8B199C11CB4CB0A005C49C5 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		F8B199C21CB4CB0A005C49C5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		F8B199D11CB4CB23005C49C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F8B199D31CB4CB23005C49C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F8B19A181CB52A0A005C49C5 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
-		F8C074321CB88BB000C75A84 /* WrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapperViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +71,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F85F92BF1DA1820A00241AB7 /* IVGFoundation.framework in Frameworks */,
-				F8AB8D281CCD24B500E50ABD /* IVGRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,23 +84,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8B1992A1CB4C73F005C49C5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		F8B199051CB4B577005C49C5 = {
 			isa = PBXGroup;
 			children = (
-				F8B19A181CB52A0A005C49C5 /* TODO.txt */,
 				F8B199111CB4B577005C49C5 /* IVGAppContainer */,
 				F8B1991D1CB4B577005C49C5 /* IVGAppContainerTests */,
-				F8B1992E1CB4C73F005C49C5 /* IVGAppContainerDemo */,
 				F8B19A0D1CB4CC1A005C49C5 /* Frameworks */,
 				F8B199101CB4B577005C49C5 /* Products */,
 			);
@@ -140,7 +102,6 @@
 			children = (
 				F8B1990F1CB4B577005C49C5 /* IVGAppContainer.framework */,
 				F8B199191CB4B577005C49C5 /* IVGAppContainerTests.xctest */,
-				F8B1992D1CB4C73F005C49C5 /* IVGAppContainerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,23 +125,6 @@
 			path = IVGAppContainerTests;
 			sourceTree = "<group>";
 		};
-		F8B1992E1CB4C73F005C49C5 /* IVGAppContainerDemo */ = {
-			isa = PBXGroup;
-			children = (
-				F8B199D01CB4CB23005C49C5 /* LaunchScreen.storyboard */,
-				F8B199D21CB4CB23005C49C5 /* Main.storyboard */,
-				F8B199B31CB4CB0A005C49C5 /* AppDelegate.swift */,
-				F8B199B41CB4CB0A005C49C5 /* Assets.xcassets */,
-				F8B199BA1CB4CB0A005C49C5 /* DemoAppCoordinator.swift */,
-				F8B199BD1CB4CB0A005C49C5 /* Info.plist */,
-				F8B199C01CB4CB0A005C49C5 /* NextScreenViewController.swift */,
-				F8C074321CB88BB000C75A84 /* WrapperViewController.swift */,
-				F8B199C11CB4CB0A005C49C5 /* RootViewController.swift */,
-				F8B199C21CB4CB0A005C49C5 /* WelcomeViewController.swift */,
-			);
-			path = IVGAppContainerDemo;
-			sourceTree = "<group>";
-		};
 		F8B199791CB4CA67005C49C5 /* source */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +143,7 @@
 				F8B1997B1CB4CA67005C49C5 /* ApplicationContainer.swift */,
 				F8B1997C1CB4CA67005C49C5 /* Coordinator.swift */,
 				F8B1997E1CB4CA67005C49C5 /* LifeCycleType.swift */,
+				F899DC4E2073DD5100094784 /* Identifier.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -335,7 +280,6 @@
 				F85F92BE1DA1820A00241AB7 /* IVGFoundation.framework */,
 				F8AB8D291CCD24BE00E50ABD /* Nimble.framework */,
 				F8AB8D2A1CCD24BE00E50ABD /* Quick.framework */,
-				F8AB8D271CCD24B500E50ABD /* IVGRouter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -390,24 +334,6 @@
 			productReference = F8B199191CB4B577005C49C5 /* IVGAppContainerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F8B1992C1CB4C73F005C49C5 /* IVGAppContainerDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F8B199541CB4C73F005C49C5 /* Build configuration list for PBXNativeTarget "IVGAppContainerDemo" */;
-			buildPhases = (
-				F8B199291CB4C73F005C49C5 /* Sources */,
-				F8B1992A1CB4C73F005C49C5 /* Frameworks */,
-				F8B1992B1CB4C73F005C49C5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F808DCE11CB5C17D003B6D56 /* PBXTargetDependency */,
-			);
-			name = IVGAppContainerDemo;
-			productName = IVGAppContainerDemo;
-			productReference = F8B1992D1CB4C73F005C49C5 /* IVGAppContainerDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -423,10 +349,6 @@
 						LastSwiftMigration = 0820;
 					};
 					F8B199181CB4B577005C49C5 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
-					};
-					F8B1992C1CB4C73F005C49C5 = {
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 0820;
 					};
@@ -447,7 +369,6 @@
 			targets = (
 				F8B1990E1CB4B577005C49C5 /* IVGAppContainer */,
 				F8B199181CB4B577005C49C5 /* IVGAppContainerTests */,
-				F8B1992C1CB4C73F005C49C5 /* IVGAppContainerDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -467,16 +388,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8B1992B1CB4C73F005C49C5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8B199D51CB4CB23005C49C5 /* Main.storyboard in Resources */,
-				F8B199D41CB4CB23005C49C5 /* LaunchScreen.storyboard in Resources */,
-				F8B199C41CB4CB0A005C49C5 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -490,6 +401,7 @@
 				F8B199961CB4CA67005C49C5 /* UserDefaultsService.swift in Sources */,
 				F8B1998F1CB4CA67005C49C5 /* Coordinator.swift in Sources */,
 				F8B1998E1CB4CA67005C49C5 /* ApplicationContainer.swift in Sources */,
+				F899DC4F2073DD5100094784 /* Identifier.swift in Sources */,
 				F808DCDD1CB5911E003B6D56 /* LazyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,52 +420,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8B199291CB4C73F005C49C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8B199CF1CB4CB0A005C49C5 /* WelcomeViewController.swift in Sources */,
-				F8B199C31CB4CB0A005C49C5 /* AppDelegate.swift in Sources */,
-				F8B199CE1CB4CB0A005C49C5 /* RootViewController.swift in Sources */,
-				F8B199CD1CB4CB0A005C49C5 /* NextScreenViewController.swift in Sources */,
-				F8B199C71CB4CB0A005C49C5 /* DemoAppCoordinator.swift in Sources */,
-				F8C074331CB88BB000C75A84 /* WrapperViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F808DCE11CB5C17D003B6D56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F8B1990E1CB4B577005C49C5 /* IVGAppContainer */;
-			targetProxy = F808DCE01CB5C17D003B6D56 /* PBXContainerItemProxy */;
-		};
 		F8B1991C1CB4B577005C49C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F8B1990E1CB4B577005C49C5 /* IVGAppContainer */;
 			targetProxy = F8B1991B1CB4B577005C49C5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F8B199D01CB4CB23005C49C5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8B199D11CB4CB23005C49C5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		F8B199D21CB4CB23005C49C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8B199D31CB4CB23005C49C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F8B199211CB4B577005C49C5 /* Debug */ = {
@@ -722,31 +597,6 @@
 			};
 			name = Release;
 		};
-		F8B199551CB4C73F005C49C5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = IVGAppContainerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivygulch.IVGAppContainerDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		F8B199561CB4C73F005C49C5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = IVGAppContainerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivygulch.IVGAppContainerDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -773,15 +623,6 @@
 			buildConfigurations = (
 				F8B199271CB4B577005C49C5 /* Debug */,
 				F8B199281CB4B577005C49C5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F8B199541CB4C73F005C49C5 /* Build configuration list for PBXNativeTarget "IVGAppContainerDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8B199551CB4C73F005C49C5 /* Debug */,
-				F8B199561CB4C73F005C49C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

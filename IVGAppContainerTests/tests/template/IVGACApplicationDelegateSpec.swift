@@ -8,7 +8,6 @@
 
 import Quick
 import Nimble
-import IVGRouter
 // need @testable since we are using a package init method
 @testable import IVGAppContainer
 
@@ -28,10 +27,6 @@ class TestIVGACApplicationDelegate : IVGACApplicationDelegate<ApplicationContain
 
 class TestAppCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
-    }
-
-    func registerRouteSegments(withRouterContext routerContext: RouterContextType) {
-
     }
 
 }

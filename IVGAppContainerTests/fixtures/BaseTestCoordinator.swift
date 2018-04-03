@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import IVGRouter
 import IVGAppContainer
 
 class BaseTestCoordinator : TrackableTestClass, CoordinatorType {
@@ -15,8 +14,5 @@ class BaseTestCoordinator : TrackableTestClass, CoordinatorType {
     required init(container: ApplicationContainerType) {
     }
 
-    func registerRouteSegments(withRouterContext routerContext: RouterContextType) {
-
-    }
 }
 

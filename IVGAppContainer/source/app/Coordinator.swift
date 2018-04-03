@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import IVGRouter
 
 public protocol CoordinatorType {
     var identifier: Identifier { get }
