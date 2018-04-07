@@ -12,13 +12,14 @@ public protocol UserDefaultsServiceType {
     func value<T>(_ key: String, valueType: T.Type) -> T?
     func setValue<T>(_ value: T, forKey key: String)
     func removeValueForKey(_ key: String)
+
+    func register(defaults: [String: Any])
 }
 
 public class UserDefaultsService: UserDefaultsServiceType {
 
-    public required init(container: ApplicationContainerType) {
-        self.container = container
-        self.userDefaults = UserDefaults.standard
+    public convenience init(container: ApplicationContainerType) {
+        self.init(container: container, userDefaults: UserDefaults.standard)
     }
 
     public init(container: ApplicationContainerType, userDefaults: UserDefaults) {
@@ -71,6 +72,10 @@ public class UserDefaultsService: UserDefaultsServiceType {
 
     public func willResignActive() {
         userDefaults.synchronize()
+    }
+
+    public func register(defaults: [String: Any]) {
+        userDefaults.register(defaults: defaults)
     }
 
     // MARK: private variables
