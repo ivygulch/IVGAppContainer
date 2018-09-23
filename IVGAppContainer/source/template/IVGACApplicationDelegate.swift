@@ -21,7 +21,7 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
         return T(window: window)
     }
 
-    open func configure(applicationContainer container: T) {
+    open func configure(application: UIApplication, applicationContainer container: T) {
         fatalError("You must override this method to configure the application container")
     }
 
@@ -30,7 +30,7 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
     public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        configure(applicationContainer: container)
+        configure(application: application, applicationContainer: container)
         container.executeStartupAction()
         
         return container.willFinishLaunching()
