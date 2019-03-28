@@ -22,7 +22,6 @@ public protocol ApplicationContainerType: class {
     init(window: UIWindow?)
     var window: UIWindow? { get }
     var containerState: ContainerState { get }
-    var startupAction: (() -> Void)? { get }
     func executeStartupAction()
 
     var resourceCount: Int { get }
@@ -66,12 +65,7 @@ open class ApplicationContainer : ApplicationContainerType {
 
     public var startupAction: (() -> Void)?
 
-    public func executeStartupAction() {
-        if let startupAction = startupAction {
-            startupAction()
-        } else {
-            print("WARNING: startupAction is undefined")
-        }
+    open func executeStartupAction() {
     }
 
     // MARK: - Resources
