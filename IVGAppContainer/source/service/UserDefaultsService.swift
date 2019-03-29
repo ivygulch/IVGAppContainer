@@ -41,6 +41,9 @@ public class UserDefaultsService: UserDefaultsServiceType {
         } else if T.self == URL.self {
             return userDefaults.url(forKey: key) as? T
         } else if T.self == Date.self {
+            if userDefaults.object(forKey: key) == nil {
+                return nil
+            }
             let timeInterval = userDefaults.double(forKey: key) as Double
             return Date(timeIntervalSinceReferenceDate: timeInterval) as? T
         }
