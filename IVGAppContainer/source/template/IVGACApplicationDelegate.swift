@@ -27,7 +27,7 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
 
     // MARK: - standard UIApplicationDelegate methods
 
-    public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         configure(application: application, applicationContainer: container)
@@ -36,7 +36,7 @@ open class IVGACApplicationDelegate<T: ApplicationContainerType> : UIResponder, 
         return container.willFinishLaunching()
     }
     
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let result = container.didFinishLaunching()
         if result {
             window?.makeKeyAndVisible()

@@ -23,16 +23,16 @@ public class LazyViewController : UIViewController {
         super.viewDidLoad()
 
         if let loadSegment = loadSegment, let childViewController = loadSegment() {
-            addChildViewController(childViewController)
+            addChild(childViewController)
             childViewController.view.frame =
                 view.bounds
             view.addSubview(childViewController.view)
-            childViewController.didMove(toParentViewController: self)
+            childViewController.didMove(toParent: self)
         }
     }
 
     public lazy var childViewController: UIViewController? = {
-        return self.childViewControllers.first
+        return self.children.first
     }()
 
     private var loadSegment: (() -> (UIViewController?))?
